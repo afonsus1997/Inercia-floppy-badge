@@ -1,29 +1,11 @@
-// Airrr's i2s random MOD player with "skipnext" button and OLED
-//main library: https://github.com/earlephilhower/ESP8266Audio
-//DAC (PCM5102):
-//3.3V -> VCC, 33V, XMT, (SCK)
-//GND  -> GND, FLT, DMP, FMT, SCL
-//BCLK->BCK      to Pin D26  ESP32
-//I2SO->DIN      to Pin D22
-//LRCLK(WS)->LCK to Pin D25
-//OLED SSD1306:
-//SDA -> D21, SCL -> D4
-//SD card:
-//CS -> D5, MOSI -> D23, CLK -> D18, MISO -> D19
-//Next track -> VP pin to VCC (pull down req.)
-
 #include <Arduino.h>
 #include "AudioGeneratorMOD.h"
 #include "AudioOutputI2S.h"
 #include "AudioFileSourceSD.h"
-// #include "AudioOutputI2SNoDAC.h"
 #include <SPI.h>
 #include <Wire.h>
 #include <SD.h>
 #include <math.h>
-
-
-
     // .miso_gpio = 12,  // GPIO number (not Pico pin number)
     // .mosi_gpio = 15,
     // .sck_gpio = 14,
@@ -32,13 +14,13 @@
 AudioGeneratorMOD *mod;
 AudioFileSourceSD *fileO;
 AudioOutputI2S *out;
-// AudioOutputI2SNoDAC *out2;
 uint16_t FileCount; //in root
 unsigned long seed;
 
 #define TOP_BUTTON 5
 #define MID_BUTTON 6
 #define BOT_BUTTON 4
+#define POT_PIN A0
 
 int buttonStateTop;  // HIGH means not pressed, LOW means pressed
 int buttonStateMid;  // HIGH means not pressed, LOW means pressed
@@ -51,7 +33,7 @@ int lastButtonStateBot = HIGH;  // HIGH means not pressed, LOW means pressed
 unsigned long lastDebounceTimeTop = 0;  // the last time the output pin was toggled
 unsigned long lastDebounceTimeMid = 0;  // the last time the output pin was toggled
 unsigned long lastDebounceTimeBot = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 100;    // the debounce time; increase if the output flickers
+unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 int activatedTop = 0;  // HIGH means not pressed, LOW means pressed
 int activatedMid = 0;  // HIGH means not pressed, LOW means pressed
@@ -60,6 +42,8 @@ int activatedBot = 0;  // HIGH means not pressed, LOW means pressed
 int file2open;
 float currVol;
 
+float vol;
+
 void setup() {  ////////////////////////////setup start
   currVol = 0.1;
   Serial.begin(115200);
@@ -67,6 +51,8 @@ void setup() {  ////////////////////////////setup start
   pinMode(TOP_BUTTON, INPUT);
   pinMode(MID_BUTTON, INPUT);
   pinMode(BOT_BUTTON, INPUT);
+  pinMode(POT_PIN, INPUT);
+  
 
   // fileO = new AudioFileSourceSD(entry.name());  
   out = new AudioOutputI2S(22000, 20, 22);
@@ -188,35 +174,35 @@ double linearToLogScale(double linearValue) {
 
 void loop()  {           /////////////loop start
   readButton();
+  vol = map(analogRead(A0), 4, 1023, 0, 200)/100.0;
   if (mod->isRunning()) {
     if (!mod->loop()) mod->stop();
     
-    if(activatedTop || activatedMid){
+    if(activatedTop || activatedMid || activatedBot){
       mod->stop();
     }
-    else if(activatedBot){
-      
-      currVol = fmod(currVol + 0.1, 1.1);
-      if(currVol == 0 ) currVol = 0.1;
-      // out->SetGain(linearToLogScale(currVol));
-      Serial.println(currVol);
-      out->SetGain(currVol);
-    }
   } else {
-    if(activatedTop || activatedMid){
-      if(activatedTop == LOW){
-        file2open = random(0, FileCount);
+    if(activatedTop  || activatedBot){
+      if(buttonStateTop == LOW){
+        // file2open = random(0, FileCount);
+        file2open = (file2open + 1) % FileCount;
         PlayFile(file2open);
       }
-      else if(activatedMid){
-        file2open = (file2open + 1) % FileCount;
+      else if(buttonStateMid == LOW){
+        // file2open = (file2open + 1) % FileCount;
+      // PlayFile(file2open);
+      }
+      else if(buttonStateBot == LOW){
+        file2open = (file2open - 1) % FileCount;
       PlayFile(file2open);
       }
     }
     else {
-      Serial.printf("MOD done\n");
-      file2open = (file2open + 1) % FileCount;
-      PlayFile(file2open);
+      if(!activatedMid) {
+        Serial.printf("MOD done\n");
+        file2open = (file2open + 1) % FileCount;
+        PlayFile(file2open);
+      }
     }
     
   }
@@ -224,6 +210,7 @@ void loop()  {           /////////////loop start
   if(activatedTop) activatedTop = 0;
   if(activatedMid) activatedMid = 0;
   if(activatedBot) activatedBot = 0;
+  out->SetGain(vol);
 
 
 }                  //////////////////loop end

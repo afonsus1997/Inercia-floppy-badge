@@ -44,6 +44,9 @@ float currVol;
 
 float vol;
 
+int loading = 0;
+
+
 void setup() {  ////////////////////////////setup start
   currVol = 0.1;
   Serial.begin(115200);
@@ -63,8 +66,7 @@ void setup() {  ////////////////////////////setup start
   mod->SetStereoSeparation(64);  // upto64 64-no separation! 0-max and ugly!
 
   Serial.printf("MOD start\n");
-  delay(500);
-  if (!SD.begin(13,1000000UL * (10), SPI1)) {
+  if (!SD.begin(13,1000000UL * (1000), SPI1)) {
     Serial.println("SD initialization failed!");
     while (1);
   }
@@ -76,7 +78,6 @@ void setup() {  ////////////////////////////setup start
       // no more files
       break;
     }
-    Serial.print(entry.name());
 
     if (entry.isDirectory()) {
     } else {
@@ -84,14 +85,14 @@ void setup() {  ////////////////////////////setup start
       if (!strcasecmp(entry.name() + strlen(entry.name()) - 4, ".mod")) {
         FileCount++;
       }
-      Serial.println(entry.size(), DEC);
     }
     entry.close();
   }
   Serial.print("MODs found:");
   Serial.println(FileCount);
-
-  PlayFile(1);
+  randomSeed(analogRead(A1));
+  PlayFile(random(0, FileCount));
+  loading = 1;
 }            //////////////////////////////setup end
 
 
@@ -172,38 +173,42 @@ double linearToLogScale(double linearValue) {
     return logScaleValue;
 }
 
+
 void loop()  {           /////////////loop start
-  readButton();
+  if(!loading)
+    readButton();
+
   vol = map(analogRead(A0), 4, 1023, 0, 200)/100.0;
   if (mod->isRunning()) {
     if (!mod->loop()) mod->stop();
-    
+    if(loading) loading = 0;
     if(activatedTop || activatedMid || activatedBot){
       mod->stop();
-    }
-  } else {
-    if(activatedTop  || activatedBot){
+      if(activatedTop  || activatedBot){
       if(buttonStateTop == LOW){
         // file2open = random(0, FileCount);
         file2open = (file2open + 1) % FileCount;
+        Serial.printf("index: %d\n", file2open);
         PlayFile(file2open);
+        loading = 1;
       }
       else if(buttonStateMid == LOW){
         // file2open = (file2open + 1) % FileCount;
       // PlayFile(file2open);
       }
       else if(buttonStateBot == LOW){
-        file2open = (file2open - 1) % FileCount;
+        file2open = random(0, FileCount-1);
       PlayFile(file2open);
+        loading = 1;
       }
     }
-    else {
-      if(!activatedMid) {
+  } }
+
+  else if(!activatedMid && !loading) {
         Serial.printf("MOD done\n");
         file2open = (file2open + 1) % FileCount;
         PlayFile(file2open);
-      }
-    }
+
     
   }
 
@@ -226,13 +231,12 @@ void PlayFile(int file2open) { /////////////////PLAY
       Serial.println("no more files");// no more files
       break;
     }
-    if (!strcasecmp(entry.name() + strlen(entry.name()) - 4, ".mod")) {
       if (file2open <= 0) {
-        Serial.printf("Vibrali:");
+      if (!strcasecmp(entry.name() + strlen(entry.name()) - 4, ".mod")) {
+        Serial.printf("Playing:");
         Serial.println(entry.name());
-
         fileO = new AudioFileSourceSD(entry.name());  
-        out->SetGain(0.8);
+        // out->SetGain(0.8);
         mod->SetBufferSize(1 * 1024);  ///3
         mod->SetSampleRate(22000);
         mod->SetStereoSeparation(64);  // upto64 64-no separation! 0-max and ugly!
@@ -240,8 +244,9 @@ void PlayFile(int file2open) { /////////////////PLAY
 
         break;
       }
-      file2open--;
+      // }
     }
+      file2open--;
   }
 }               ///////////////////////PLAY
 

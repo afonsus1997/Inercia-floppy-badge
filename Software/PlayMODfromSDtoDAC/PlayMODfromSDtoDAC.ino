@@ -91,7 +91,8 @@ void setup() {  ////////////////////////////setup start
   Serial.print("MODs found:");
   Serial.println(FileCount);
   randomSeed(analogRead(A1));
-  PlayFile(random(0, FileCount));
+  file2open = random(0, FileCount-1);
+  PlayFile(file2open);
   loading = 1;
 }            //////////////////////////////setup end
 

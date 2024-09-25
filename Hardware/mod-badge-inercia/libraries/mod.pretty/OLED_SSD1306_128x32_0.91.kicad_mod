@@ -1,0 +1,177 @@
+(footprint "OLED_SSD1306_128x32_0.91"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "0.91\" 128x32 OLED module")
+	(tags "0.91,128x32,OLED,LCD,Display,SSD1306")
+	(property "Reference" "REF**"
+		(at 2 -3 0)
+		(layer "F.SilkS")
+		(uuid "010bf64d-4e11-4cbc-9da2-0466ee494d18")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "OLED_SSD1306_128x32_0.91"
+		(at 28 11 0)
+		(layer "F.Fab")
+		(uuid "8a731a63-c565-4352-a952-38a271eab704")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "684041d9-8556-4784-9ea4-314b718e2db6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6ddc54af-b20a-4c23-9ac3-ec4c17b57b45")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a68d28e5-8ecc-44d2-920b-a8c23f52d84c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start 0 0)
+		(end 39 12)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "abc74d7d-6c81-46bd-8ea1-e6a523b6b549")
+	)
+	(fp_rect
+		(start 6.27 1)
+		(end 33 9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "f33373ed-42a3-47bf-b497-d2b4136de18f")
+	)
+	(fp_rect
+		(start 0 0)
+		(end 5.07222 11.999859)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "B.CrtYd")
+		(uuid "e8b07bbd-594e-4cad-81ef-f241a41f1d42")
+	)
+	(fp_rect
+		(start 0.019691 0)
+		(end 5.08 12.001052)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "55d9bf3a-d385-4890-ab52-e40848b42b14")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 4 -1 180)
+		(layer "F.Fab")
+		(uuid "06b6135b-a804-4a8e-bb26-7a50be573bfe")
+		(effects
+			(font
+				(size 0.76 0.76)
+				(thickness 0.114)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 2.54 2.54)
+		(size 3.62 1.6)
+		(drill oval 3 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "92d0e85b-4398-4655-8757-e42e17f7c682")
+	)
+	(pad "2" thru_hole oval
+		(at 2.54 5.08)
+		(size 3.6 1.6)
+		(drill oval 3 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3d910097-4cf0-48a7-a87e-61df35edee24")
+	)
+	(pad "3" thru_hole oval
+		(at 2.54 7.62)
+		(size 3.6 1.6)
+		(drill oval 3 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0bdffd4e-dc12-4a62-808b-d741e74e699c")
+	)
+	(pad "4" thru_hole oval
+		(at 2.54 10.16)
+		(size 3.6 1.6)
+		(drill oval 3 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "37db0390-9a01-46a5-afbc-ad1cbaae159f")
+	)
+	(model "${THISPTR_LBR_DIR}/kicad-oled-ssd1306-128x32/OLED-SSD1306-128x32-0.91.3dshapes/OLED_SSD1306_128x32_0.91.stp"
+		(hide yes)
+		(offset
+			(xyz 20 -6.5 3)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${THISPTR_LBR_DIR}/kicad-oled-ssd1306-128x32/OLED-SSD1306-128x32-0.91.3dshapes/OLED_SSD1306_128x32_0.91_PIN_HEADER.stp"
+		(offset
+			(xyz 20 -6.5 11)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

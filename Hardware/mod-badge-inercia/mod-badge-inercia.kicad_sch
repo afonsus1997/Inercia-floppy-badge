@@ -14113,82 +14113,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 26.67 242.57 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "402496ca-15a4-4fee-b340-26781648c8c9")
-		(property "Reference" "J101"
-			(at 24.13 242.5699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Conn_01x04"
-			(at 24.13 245.1099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "mod:OLED_SSD1306_128x32_0.91"
-			(at 26.67 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 26.67 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 26.67 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "03778916-5795-4909-a607-75ef0830c0b3")
-		)
-		(pin "4"
-			(uuid "333bc35d-37ee-4118-b560-a556297960d5")
-		)
-		(pin "3"
-			(uuid "ea3989ca-ff3b-44c4-8f0d-4f8e98d3cc22")
-		)
-		(pin "2"
-			(uuid "e74a4021-53c9-4c56-848d-a30490c88c38")
-		)
-		(instances
-			(project ""
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "J101")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 163.83 72.39 0)
 		(unit 1)
@@ -19326,6 +19250,81 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "#PWR0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 26.67 245.11 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af7c87b1-dc3f-47f0-b252-6e6d860c5940")
+		(property "Reference" "J6"
+			(at 24.13 245.1101 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_01x04"
+			(at 24.13 242.5701 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mod:OLED_SSD1306_128x32_0.91"
+			(at 26.67 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 26.67 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 26.67 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a4016ac-c0bf-454a-86fc-6097a5a7d9bb")
+		)
+		(pin "4"
+			(uuid "e453cfdc-b20e-4df5-9aa0-d912fe3262ea")
+		)
+		(pin "3"
+			(uuid "0845e31a-7d1f-418f-a778-eca76b097f3b")
+		)
+		(pin "2"
+			(uuid "12e269f3-521f-4a56-83fd-c6fdffbc3a52")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "J6")
 					(unit 1)
 				)
 			)

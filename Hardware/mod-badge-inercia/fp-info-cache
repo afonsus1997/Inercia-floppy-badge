@@ -1,4 +1,4 @@
-23829076048021521
+23832534205143285
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -96550,6 +96550,20 @@ AAA-HOLDER-THD
 0
 2
 2
+mod
+CONN-SMD_2P-P1.25_HC_HCZZ0001-2
+
+
+0
+4
+3
+mod
+CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN
+
+
+0
+4
+4
 mod
 J_sd_micro_socket
 SD Card Socket, Olimex, MICRO-SD-CARD 

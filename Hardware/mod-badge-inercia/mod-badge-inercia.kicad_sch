@@ -20209,7 +20209,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "mod:AAA-HOLDER-THD"
+		(property "Footprint" "mod:BAT-TH_BH-AAA-A1AJ024"
 			(at 27.94 35.306 90)
 			(effects
 				(font
@@ -20236,7 +20236,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C5290191"
+		(property "LCSC" "C5290193"
 			(at 27.94 36.83 0)
 			(effects
 				(font

@@ -3669,239 +3669,6 @@
 				)
 			)
 		)
-		(symbol "Device:R_Pack04_Split"
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "RN"
-				(at 2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "R_Pack04_Split"
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at -2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "4 resistor network, parallel topology, split"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "R network parallel topology isolated"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "DIP* SOIC* R*Array*Concave* R*Array*Convex* MSOP*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_Pack04_Split_0_1"
-				(rectangle
-					(start 1.016 2.54)
-					(end -1.016 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_Pack04_Split_1_1"
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "R1.1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "R1.2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "R_Pack04_Split_2_1"
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "R2.1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "R2.2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "R_Pack04_Split_3_1"
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "R3.1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "R3.2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "R_Pack04_Split_4_1"
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "R4.1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "R4.2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:R_Potentiometer"
 			(pin_names
 				(offset 1.016) hide)
@@ -4171,187 +3938,6 @@
 					(at -5.08 -2.54 0)
 					(length 2.54)
 					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "Jumper:SolderJumper_2_Open"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim yes)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "JP"
-				(at 0 2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SolderJumper_2_Open"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Solder Jumper, 2-pole, open"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "solder jumper SPST"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SolderJumper*Open*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SolderJumper_2_Open_0_1"
-				(arc
-					(start -0.254 1.016)
-					(mid -1.2656 0)
-					(end -0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -0.254 1.016)
-					(mid -1.2656 0)
-					(end -0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.254 1.016) (xy -0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 1.016) (xy 0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0.254 -1.016)
-					(mid 1.2656 0)
-					(end 0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0.254 -1.016)
-					(mid 1.2656 0)
-					(end 0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "SolderJumper_2_Open_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "B"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -8267,6 +7853,12 @@
 		(uuid "4d1f9c8e-a371-4ff9-a41e-6159551f2889")
 	)
 	(junction
+		(at 237.49 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4d9f2763-4344-493a-b400-52682472a5b9")
+	)
+	(junction
 		(at 157.48 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8315,12 +7907,6 @@
 		(uuid "645e0d78-e265-4cfa-aaba-44999efbfb42")
 	)
 	(junction
-		(at 185.42 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "65e68b7b-4810-43f6-a14d-5f1def8c5360")
-	)
-	(junction
 		(at 365.76 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8343,6 +7929,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6e8a32fa-0eb0-4001-a1d7-38cc33eb3146")
+	)
+	(junction
+		(at 168.91 203.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "78a69dbd-1f69-4841-a68a-e9c1246c7a6e")
+	)
+	(junction
+		(at 201.93 203.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "797a3c26-bee9-4879-a677-d8a69f3929a0")
 	)
 	(junction
 		(at 266.7 104.14)
@@ -8387,12 +7985,6 @@
 		(uuid "8fd0e7b7-bac7-4fd7-b7c6-a3cb6fa597d1")
 	)
 	(junction
-		(at 201.93 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9164eaa2-a141-4b69-8610-1031e9376e23")
-	)
-	(junction
 		(at 331.47 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8435,6 +8027,12 @@
 		(uuid "abd24ac9-a26b-4d61-ac5d-de1a573b92d1")
 	)
 	(junction
+		(at 185.42 203.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ac15e09c-cb05-4395-9087-e8b8544ef466")
+	)
+	(junction
 		(at 156.21 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8447,6 +8045,12 @@
 		(uuid "b5075493-0542-40bc-94d8-55af3e8f7cba")
 	)
 	(junction
+		(at 259.08 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b55c7080-821d-495e-9e24-75df2866d3fe")
+	)
+	(junction
 		(at 339.09 175.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8457,12 +8061,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c1011406-7c6b-4bf2-9780-30fb31f63bc4")
-	)
-	(junction
-		(at 168.91 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c1507669-de78-43bb-8586-1058ea5e90b7")
 	)
 	(junction
 		(at 227.33 77.47)
@@ -8619,16 +8217,6 @@
 			(type default)
 		)
 		(uuid "066fe6a4-244f-479f-a390-701ee8d5201b")
-	)
-	(wire
-		(pts
-			(xy 201.93 167.64) (xy 213.36 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0759b4af-809a-4bf7-8978-64988db907bf")
 	)
 	(wire
 		(pts
@@ -8932,16 +8520,6 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 144.78) (xy 209.55 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1e4d640e-7d87-4f5f-95d2-2bd5807d9a95")
-	)
-	(wire
-		(pts
 			(xy 133.35 38.1) (xy 133.35 43.18)
 		)
 		(stroke
@@ -9052,6 +8630,16 @@
 	)
 	(wire
 		(pts
+			(xy 259.08 170.18) (xy 259.08 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b662293-013b-4a73-ad87-a962c1dde38c")
+	)
+	(wire
+		(pts
 			(xy 97.79 218.44) (xy 111.76 218.44)
 		)
 		(stroke
@@ -9149,6 +8737,16 @@
 			(type default)
 		)
 		(uuid "3843a85e-89f9-4203-a31d-7090c6f8042d")
+	)
+	(wire
+		(pts
+			(xy 259.08 171.45) (xy 271.78 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d8968cb-3222-4db4-b73c-84eac57f2670")
 	)
 	(wire
 		(pts
@@ -9352,13 +8950,13 @@
 	)
 	(wire
 		(pts
-			(xy 220.98 162.56) (xy 229.87 162.56)
+			(xy 201.93 144.78) (xy 209.55 144.78)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4f5c6ae7-2891-49bc-8b10-881ddd29b2d7")
+		(uuid "4dab1e92-70a4-4a76-b683-97775abe75cd")
 	)
 	(wire
 		(pts
@@ -9439,6 +9037,16 @@
 			(type default)
 		)
 		(uuid "58c3d528-d9cb-4fc8-aeb8-3ea61025dbda")
+	)
+	(wire
+		(pts
+			(xy 259.08 180.34) (xy 259.08 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b2cf1e4-2ba5-4d02-82ac-e50aae88d5df")
 	)
 	(wire
 		(pts
@@ -9642,6 +9250,16 @@
 	)
 	(wire
 		(pts
+			(xy 349.25 86.36) (xy 360.68 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74ec5a33-c144-4f60-96f3-63bdc0071e4f")
+	)
+	(wire
+		(pts
 			(xy 288.29 83.82) (xy 298.45 83.82)
 		)
 		(stroke
@@ -9812,16 +9430,6 @@
 	)
 	(wire
 		(pts
-			(xy 220.98 167.64) (xy 229.87 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "80511db4-e98c-44e8-b566-983689c753ca")
-	)
-	(wire
-		(pts
 			(xy 349.25 99.06) (xy 358.14 99.06)
 		)
 		(stroke
@@ -9869,6 +9477,16 @@
 			(type default)
 		)
 		(uuid "8605cf88-b521-4235-895d-3e05cbe0a9d9")
+	)
+	(wire
+		(pts
+			(xy 237.49 171.45) (xy 237.49 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86ac4194-bf66-4bac-86e0-adc2ceb9155c")
 	)
 	(wire
 		(pts
@@ -10252,16 +9870,6 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 162.56) (xy 213.36 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a6adbee1-3034-4c7d-99dc-f0509203eb25")
-	)
-	(wire
-		(pts
 			(xy 26.67 87.63) (xy 29.21 87.63)
 		)
 		(stroke
@@ -10269,6 +9877,16 @@
 			(type default)
 		)
 		(uuid "a7aaea3f-f4bd-4e41-84b7-98eab0db7450")
+	)
+	(wire
+		(pts
+			(xy 237.49 161.29) (xy 237.49 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a86e4d37-4385-472f-b12c-59191ba64734")
 	)
 	(wire
 		(pts
@@ -10329,6 +9947,16 @@
 			(type default)
 		)
 		(uuid "af2073e5-0fce-4c7b-a99f-f5c22b973492")
+	)
+	(wire
+		(pts
+			(xy 237.49 171.45) (xy 250.19 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0e37970-725a-4d96-8d91-e7745dab1e2d")
 	)
 	(wire
 		(pts
@@ -10399,16 +10027,6 @@
 			(type default)
 		)
 		(uuid "b59ee391-e250-4f36-9303-fd3a1bdb2e88")
-	)
-	(wire
-		(pts
-			(xy 369.57 86.36) (xy 384.81 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b5d9b5ca-c2c2-4848-8f46-dad1f069befa")
 	)
 	(wire
 		(pts
@@ -10852,6 +10470,16 @@
 	)
 	(wire
 		(pts
+			(xy 237.49 170.18) (xy 237.49 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d40e86bb-41f5-4fe2-bfa3-3600b485b39d")
+	)
+	(wire
+		(pts
 			(xy 99.06 53.34) (xy 100.33 53.34)
 		)
 		(stroke
@@ -10939,16 +10567,6 @@
 			(type default)
 		)
 		(uuid "d95c6a99-cecd-48f3-aca0-9f5fa69bdeb9")
-	)
-	(wire
-		(pts
-			(xy 369.57 76.2) (xy 384.81 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dbc931ec-d5fd-45e8-9023-e9cb8bffbea6")
 	)
 	(wire
 		(pts
@@ -11092,16 +10710,6 @@
 	)
 	(wire
 		(pts
-			(xy 349.25 86.36) (xy 361.95 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e5a05ee3-7dd8-469f-b0e0-31922c93ca4e")
-	)
-	(wire
-		(pts
 			(xy 349.25 129.54) (xy 358.14 129.54)
 		)
 		(stroke
@@ -11139,6 +10747,16 @@
 			(type default)
 		)
 		(uuid "e90ee6c4-2251-4714-8b80-08fa390100c9")
+	)
+	(wire
+		(pts
+			(xy 259.08 171.45) (xy 259.08 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eabb2a5b-d17b-4e72-ad2b-43fdae19be7f")
 	)
 	(wire
 		(pts
@@ -11189,6 +10807,16 @@
 			(type default)
 		)
 		(uuid "ef07ce55-8a49-494a-964c-69fecf65ad19")
+	)
+	(wire
+		(pts
+			(xy 259.08 161.29) (xy 259.08 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef94928e-6888-4c38-b352-caba17998bb5")
 	)
 	(wire
 		(pts
@@ -11402,6 +11030,16 @@
 	)
 	(wire
 		(pts
+			(xy 237.49 180.34) (xy 237.49 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fef3ef9c-a3ca-4c17-83dc-d03aea79e917")
+	)
+	(wire
+		(pts
 			(xy 349.25 109.22) (xy 360.68 109.22)
 		)
 		(stroke
@@ -11430,6 +11068,17 @@
 			)
 		)
 		(uuid "a003621d-ccbf-4377-85b0-67c6ff07fae0")
+	)
+	(label "SAO_SDA"
+		(at 224.79 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "00288319-b1c4-43c3-a45b-3d778a113bb4")
 	)
 	(label "OLED_SDA"
 		(at 349.25 53.34 0)
@@ -11475,17 +11124,6 @@
 		)
 		(uuid "02b3d5ed-e6b4-45d1-85bf-32b8f54f6482")
 	)
-	(label "GP19"
-		(at 203.2 144.78 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "04b209da-6122-4e01-b815-01fafebb23d3")
-	)
 	(label "I2S_DIN"
 		(at 110.49 121.92 0)
 		(fields_autoplaced yes)
@@ -11497,17 +11135,6 @@
 		)
 		(uuid "0622c52c-7652-4c81-90e3-811b58a8371a")
 	)
-	(label "SAO_SDA"
-		(at 204.47 167.64 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0942a8d7-0447-4cc7-a7eb-453d6c191693")
-	)
 	(label "3v3_boost"
 		(at 176.53 53.34 0)
 		(fields_autoplaced yes)
@@ -11518,17 +11145,6 @@
 			(justify left bottom)
 		)
 		(uuid "0c64bf76-13b7-4cf3-8552-f0195f85ee80")
-	)
-	(label "GP18"
-		(at 349.25 99.06 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0d5f8d99-2ffb-47fc-bc6b-8f89d15c26fb")
 	)
 	(label "QSPI_SCLK"
 		(at 288.29 86.36 0)
@@ -11563,17 +11179,6 @@
 		)
 		(uuid "14fb2c88-81f6-4c82-b3dc-4098884b0b6a")
 	)
-	(label "GP8"
-		(at 349.25 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "162f1c97-d000-4278-aa23-5817c75130df")
-	)
 	(label "LIPO_IN"
 		(at 44.45 52.07 0)
 		(fields_autoplaced yes)
@@ -11595,17 +11200,6 @@
 			(justify left bottom)
 		)
 		(uuid "20620449-9f06-47f8-a6c2-8a188755f362")
-	)
-	(label "SPI_1_CS"
-		(at 374.65 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "20a56bad-8a7e-40bf-923e-57930974d544")
 	)
 	(label "~{USB_BOOT}"
 		(at 318.77 163.83 90)
@@ -11717,17 +11311,6 @@
 		)
 		(uuid "33c86024-ba36-4d24-8288-afd77f8d5c8f")
 	)
-	(label "GP11"
-		(at 349.25 81.28 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3ad49ace-dcfa-4987-9072-b25ebeeb9e50")
-	)
 	(label "QSPI_SD0"
 		(at 288.29 76.2 0)
 		(fields_autoplaced yes)
@@ -11738,6 +11321,17 @@
 			(justify left bottom)
 		)
 		(uuid "3bf9239a-acee-45e7-bd91-42a4ba3b810c")
+	)
+	(label "SAO_SCL"
+		(at 201.93 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "40f87d1c-00f4-4560-9111-04f74ba9d8ea")
 	)
 	(label "GP28"
 		(at 349.25 127 0)
@@ -11783,6 +11377,17 @@
 		)
 		(uuid "47eefd90-292d-43d7-a655-405cb06173b4")
 	)
+	(label "LIPO_DET"
+		(at 349.25 81.28 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4b09c4d6-fda5-4431-b02e-b0428889f2d7")
+	)
 	(label "MCU_SWCLK"
 		(at 281.94 119.38 0)
 		(fields_autoplaced yes)
@@ -11793,17 +11398,6 @@
 			(justify left bottom)
 		)
 		(uuid "4f094ab5-eaa5-4ad4-978f-1344c0cdfcfd")
-	)
-	(label "GP18"
-		(at 224.79 144.78 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "50c606aa-0cfa-45ae-b9e5-d685cfdf4b35")
 	)
 	(label "SPI_1_MOSI"
 		(at 349.25 91.44 0)
@@ -11871,6 +11465,17 @@
 		)
 		(uuid "626fa443-293a-43ee-a5c0-d3dcead07fa1")
 	)
+	(label "LIPO_DET"
+		(at 241.3 171.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "63d799b4-3580-44a7-8da4-5cade55b7fdf")
+	)
 	(label "SAO_GPIO1"
 		(at 29.21 270.51 0)
 		(fields_autoplaced yes)
@@ -11936,6 +11541,17 @@
 			(justify left bottom)
 		)
 		(uuid "6ce2e87b-a6f9-4eea-970f-861e6ef7be1f")
+	)
+	(label "LIPO_IN"
+		(at 237.49 161.29 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6fe6572d-7084-46ae-a06f-f5bc812d768f")
 	)
 	(label "SAO_GPIO2"
 		(at 55.88 270.51 0)
@@ -12015,7 +11631,7 @@
 		(uuid "859d0809-49f9-4a02-a5c7-1eee67a35d15")
 	)
 	(label "SPI_1_CS"
-		(at 374.65 76.2 0)
+		(at 349.25 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12024,6 +11640,17 @@
 			(justify left bottom)
 		)
 		(uuid "87341150-cf9a-468d-8978-edae7e55aa57")
+	)
+	(label "SAO_SDA"
+		(at 349.25 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8b0635db-7c66-494d-9748-0cfda8de5532")
 	)
 	(label "QSPI_SD2"
 		(at 288.29 81.28 0)
@@ -12091,17 +11718,6 @@
 		)
 		(uuid "97d8fc04-b466-4faf-9d31-16d65578b01f")
 	)
-	(label "GP19"
-		(at 349.25 101.6 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "986e6951-aa34-4149-920d-4f22eb0741b3")
-	)
 	(label "GP24"
 		(at 349.25 114.3 0)
 		(fields_autoplaced yes)
@@ -12123,17 +11739,6 @@
 			(justify left bottom)
 		)
 		(uuid "9f1fe93f-1199-454e-a9aa-b43dd8291ac3")
-	)
-	(label "GP18"
-		(at 222.25 167.64 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9f27cf2f-44c8-4ec0-b212-6a4e89ccc577")
 	)
 	(label "RUN"
 		(at 339.09 162.56 90)
@@ -12189,17 +11794,6 @@
 			(justify left bottom)
 		)
 		(uuid "aa74fc75-a8e8-4aa3-804d-fb8eb938678c")
-	)
-	(label "SAO_SCL"
-		(at 204.47 162.56 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "aadc3ff4-7d75-4875-ae85-0b40d8e88c29")
 	)
 	(label "USB_D_P"
 		(at 48.26 125.73 0)
@@ -12377,6 +11971,17 @@
 		)
 		(uuid "c6f0c1a9-fa83-41b4-817f-8bcc1c225a7a")
 	)
+	(label "GP9"
+		(at 349.25 76.2 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c78d1049-1b7c-4b7c-80ac-82ea6c46f6e8")
+	)
 	(label "SPI_1_CS"
 		(at 71.12 215.9 90)
 		(fields_autoplaced yes)
@@ -12398,6 +12003,17 @@
 			(justify left bottom)
 		)
 		(uuid "ca5effe6-29ce-4751-94d9-6b767459fa1f")
+	)
+	(label "VBUS_DET"
+		(at 262.89 171.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ca80814f-e360-4057-8f87-5866ff5688d5")
 	)
 	(label "I2S_LRC"
 		(at 110.49 127 0)
@@ -12453,6 +12069,17 @@
 			(justify left bottom)
 		)
 		(uuid "d0bc9edc-c334-441e-92f8-3309604d3356")
+	)
+	(label "VBUS_DET"
+		(at 349.25 73.66 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d3323258-f4cb-41bb-84df-9a0c55d4b54d")
 	)
 	(label "QSPI_SS"
 		(at 312.42 214.63 0)
@@ -12530,6 +12157,17 @@
 			(justify left bottom)
 		)
 		(uuid "e106adc4-fa6c-493c-ab29-b4fbfc5b6dc1")
+	)
+	(label "SAO_SCL"
+		(at 349.25 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1da3da0-c90b-492e-ab60-dacdce26bfe9")
 	)
 	(label "MCU_SWD"
 		(at 256.54 123.19 0)
@@ -12618,17 +12256,6 @@
 			(justify left bottom)
 		)
 		(uuid "f9383607-12b5-4993-a740-082edce424d9")
-	)
-	(label "GP19"
-		(at 222.25 162.56 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fa148865-6558-40c1-971e-a40477f8acae")
 	)
 	(label "GP27"
 		(at 203.2 134.62 0)
@@ -13346,6 +12973,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 237.49 166.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0d416bd5-347f-494f-a6ce-8219429c6852")
+		(property "Reference" "R107"
+			(at 240.03 165.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "62k"
+			(at 240.03 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 235.712 166.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 237.49 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 237.49 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 237.49 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "76a3d063-b4cd-4329-a088-51c466eabc64")
+		)
+		(pin "2"
+			(uuid "95a6c6aa-7cd7-4605-b2f8-151652c82363")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+BATT")
 		(at 44.45 90.17 0)
 		(unit 1)
@@ -13557,6 +13272,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 237.49 181.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "13a48e37-6793-4ee8-9003-aa8a27548115")
+		(property "Reference" "#PWR0113"
+			(at 237.49 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 237.49 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 237.49 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be3af9c3-a9aa-4e1a-824d-a1d1735ad1ad")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 242.57 53.34 90)
 		(unit 1)
@@ -13637,92 +13418,6 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "R24")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 365.76 86.36 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1924ba11-0575-4119-9304-cc2dd6f8bc51")
-		(property "Reference" "R14"
-			(at 365.76 80.01 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 365.76 82.55 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 365.76 88.138 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 365.76 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 365.76 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field4" ""
-			(at 365.76 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C95177"
-			(at 365.76 86.36 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e3e445a2-096c-4eb0-81a4-100d20c75e40")
-		)
-		(pin "2"
-			(uuid "36e9c389-2c5c-478f-90db-5e054aafc65c")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -14323,6 +14018,72 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "#PWR0109")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VBUS")
+		(at 259.08 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2b1a1784-0d6c-4a74-ac49-3eaf868eb8a5")
+		(property "Reference" "#PWR0110"
+			(at 259.08 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VBUS"
+			(at 259.08 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 259.08 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 259.08 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 259.08 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "03c0638c-dc84-4912-afde-08e443dbefb8")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "#PWR0110")
 					(unit 1)
 				)
 			)
@@ -16594,7 +16355,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C5345965 "
+		(property "LCSC" " C7529028"
 			(at 54.61 48.26 0)
 			(effects
 				(font
@@ -17519,7 +17280,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C5345965 "
+		(property "LCSC" " C7529028"
 			(at 231.14 77.47 0)
 			(effects
 				(font
@@ -17538,6 +17299,94 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 259.08 166.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6c5884c3-f47e-4820-b84b-f27b8b9d9e95")
+		(property "Reference" "R106"
+			(at 261.62 165.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "62k"
+			(at 261.62 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 257.302 166.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 259.08 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 259.08 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 259.08 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "58332fb0-43bc-4b3f-a2f3-b2adac95629d")
+		)
+		(pin "2"
+			(uuid "897a57f1-c493-45c8-b618-722d78d21113")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R106")
 					(unit 1)
 				)
 			)
@@ -17820,103 +17669,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 214.63 210.82 180)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "73848f28-5fb3-4970-b74a-3e85b8610eb8")
-		(property "Reference" "RN2"
-			(at 217.17 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "R_Pack04_Split"
-			(at 217.17 212.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0402"
-			(at 216.662 210.82 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 214.63 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 214.63 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C414600 "
-			(at 214.63 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d35383b8-58c9-4e28-9b52-65444e460a62")
-		)
-		(pin "8"
-			(uuid "4da48299-be63-4e3c-aaf2-5aa99da81581")
-		)
-		(pin "2"
-			(uuid "199d26be-3e94-4ca3-9aa7-a356314cbef9")
-		)
-		(pin "7"
-			(uuid "370433ce-3fe7-4c60-930b-6ce0bcca1ce6")
-		)
-		(pin "3"
-			(uuid "8c437280-fa95-48c3-9e45-e8cbffdd8693")
-		)
-		(pin "6"
-			(uuid "debb1736-e1b0-46a7-96e4-d87af73aee74")
-		)
-		(pin "4"
-			(uuid "bac08eac-df56-4ea1-b605-73465e1ca85b")
-		)
-		(pin "5"
-			(uuid "b5c51ecf-057e-40e6-a856-032c858ca72b")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "RN2")
-					(unit 4)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
 		(at 361.95 118.11 0)
 		(mirror y)
@@ -18132,74 +17884,6 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 217.17 162.56 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "7a02d564-7e8d-40e0-bfd5-cee00d9902b7")
-		(property "Reference" "JP1"
-			(at 217.17 160.528 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 217.17 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 217.17 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 217.17 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 217.17 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "10441d45-9840-402d-a9fa-494cad5717f2")
-		)
-		(pin "1"
-			(uuid "eeb16979-6d7a-46fa-b186-16251885f503")
-		)
-		(instances
-			(project ""
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -19744,103 +19428,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 185.42 199.39 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9c791a14-5bd0-4dc2-973b-267c1340d8fc")
-		(property "Reference" "RN2"
-			(at 187.96 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "R_Pack04_Split"
-			(at 187.96 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0402"
-			(at 187.452 199.39 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 185.42 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C414600 "
-			(at 185.42 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a86efb15-1475-4e93-ab71-ed307972d7dc")
-		)
-		(pin "8"
-			(uuid "5fa0ca53-a0d7-48f8-b131-c2d01fa169b5")
-		)
-		(pin "2"
-			(uuid "e29846a8-21e0-4385-a18c-a4ff19484de4")
-		)
-		(pin "7"
-			(uuid "2d73845a-7112-4da9-869e-1798c0e73afc")
-		)
-		(pin "3"
-			(uuid "cd1eec12-653f-47b4-bb30-5bd40ff81de9")
-		)
-		(pin "6"
-			(uuid "291f78e9-b14b-4580-b954-f47963ec55c1")
-		)
-		(pin "4"
-			(uuid "d62dab99-649e-44be-9376-18085d462370")
-		)
-		(pin "5"
-			(uuid "11fece9f-4ae2-489b-87cd-225f54b41f6b")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "RN2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:Speaker")
 		(at 161.29 157.48 0)
 		(unit 1)
@@ -20400,7 +19987,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C5345965 "
+		(property "LCSC" " C7529028"
 			(at 190.5 72.39 0)
 			(effects
 				(font
@@ -20675,6 +20262,94 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 237.49 176.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ab2540b0-1008-41ec-a45f-ddef4ba413b5")
+		(property "Reference" "R108"
+			(at 240.03 175.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "91k"
+			(at 240.03 177.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 235.712 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 237.49 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 237.49 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C5356711"
+			(at 237.49 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a8cf4183-e0a6-429a-964d-39031984529c")
+		)
+		(pin "2"
+			(uuid "575fd3c8-af5f-4bac-a489-7fb95a92a188")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 58.42 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -20844,6 +20519,94 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "R104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 199.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad3345ef-eb1a-4246-ba9b-3b595b1f6159")
+		(property "Reference" "R109"
+			(at 171.45 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 171.45 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 167.132 199.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 168.91 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 168.91 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C103199 "
+			(at 168.91 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dcc0956b-1f44-443b-b85a-41dd39191ff7")
+		)
+		(pin "2"
+			(uuid "bdf5b8da-d3f5-4c1a-b2dc-84af6d397685")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R109")
 					(unit 1)
 				)
 			)
@@ -21222,74 +20985,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 217.17 167.64 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "b23c8e09-44a4-4c59-b871-7e1f9079b93f")
-		(property "Reference" "JP2"
-			(at 217.17 165.608 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 217.17 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 217.17 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 217.17 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 217.17 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "7aaede76-3cb7-4853-9209-e188db8c9db2")
-		)
-		(pin "1"
-			(uuid "618c9045-d573-4753-93cb-d437a6c68d2d")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "JP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 274.32 104.14 0)
 		(unit 1)
@@ -21562,103 +21257,6 @@
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "#PWR0104")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 168.91 199.39 180)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b850704a-8bd6-4844-8e27-a8c2d976defc")
-		(property "Reference" "RN2"
-			(at 171.45 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "R_Pack04_Split"
-			(at 171.45 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0402"
-			(at 170.942 199.39 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 168.91 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 168.91 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C414600 "
-			(at 168.91 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7c4d296c-1cd3-4273-9671-04856564c081")
-		)
-		(pin "8"
-			(uuid "405bcc31-8525-4b68-8898-77840e9a8ba6")
-		)
-		(pin "2"
-			(uuid "542b7ce4-357a-4b1e-ad6e-fff819fd6c69")
-		)
-		(pin "7"
-			(uuid "30aa9968-cc37-4181-9888-6503f7a21b37")
-		)
-		(pin "3"
-			(uuid "c9d6a43f-12b1-48ba-9aa0-459b8949a3d1")
-		)
-		(pin "6"
-			(uuid "309eaddf-9001-4e65-84bb-b23cd86d659d")
-		)
-		(pin "4"
-			(uuid "6c480363-f9ca-449c-b002-69a0b189f2ab")
-		)
-		(pin "5"
-			(uuid "9598986f-5798-420f-aed6-69a9d02b51d9")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "RN2")
-					(unit 3)
 				)
 			)
 		)
@@ -22070,103 +21668,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 201.93 199.39 180)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bea6f945-e39d-4a9f-924d-79c69c2f15b1")
-		(property "Reference" "RN2"
-			(at 204.47 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "R_Pack04_Split"
-			(at 204.47 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_Array_Convex_4x0402"
-			(at 203.962 199.39 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 201.93 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 201.93 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C414600 "
-			(at 201.93 199.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "17d0dd97-27d9-46af-ad28-bdddc8e2364c")
-		)
-		(pin "8"
-			(uuid "cb8ed991-5a85-4992-bcc6-0caee657c4a2")
-		)
-		(pin "2"
-			(uuid "68c83cc5-456b-48dc-9997-fefd12223569")
-		)
-		(pin "7"
-			(uuid "163380ab-63de-4b6e-bc7e-ab781b5c44d9")
-		)
-		(pin "3"
-			(uuid "59d71224-2825-47be-b604-7dd445087444")
-		)
-		(pin "6"
-			(uuid "4507112e-3992-413b-9991-d28d0ef21bbe")
-		)
-		(pin "4"
-			(uuid "d71c6023-3d89-405c-ae9b-654166272ee9")
-		)
-		(pin "5"
-			(uuid "6393c8ba-401d-4b0d-bfd9-433b01fd1531")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "RN2")
-					(unit 2)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
 		(at 45.72 267.97 0)
 		(unit 1)
@@ -22419,9 +21920,9 @@
 		(at 137.16 33.02 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "c2c32652-94a9-4db2-bd57-bd5068ff73a8")
 		(property "Reference" "R4"
@@ -22955,7 +22456,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C5345965 "
+		(property "LCSC" " C7529028"
 			(at 54.61 52.07 0)
 			(effects
 				(font
@@ -23111,7 +22612,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" " C5345965 "
+		(property "LCSC" " C7529028"
 			(at 191.77 53.34 0)
 			(effects
 				(font
@@ -23665,6 +23166,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 259.08 176.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d9c08419-b138-4031-aeae-dcea619c5c7b")
+		(property "Reference" "R105"
+			(at 261.62 175.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "91k"
+			(at 261.62 177.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 257.302 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 259.08 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 259.08 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C5356711"
+			(at 259.08 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "09eb417e-2d16-4c47-8df2-1704d7f5db87")
+		)
+		(pin "2"
+			(uuid "91a60e25-4ce0-4f9a-bf59-16b38f3e4836")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Transistor_FET:AO3401A")
 		(at 86.36 48.26 0)
 		(mirror x)
@@ -24027,6 +23616,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 185.42 199.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e45c5ebe-6f81-4037-b276-9ecce7ab1352")
+		(property "Reference" "R110"
+			(at 187.96 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 187.96 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 183.642 199.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 185.42 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 185.42 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C103199 "
+			(at 185.42 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5184a55e-346c-4cf6-9746-24f55667e793")
+		)
+		(pin "2"
+			(uuid "e70c9614-39ed-46ec-ba63-010ce787fee7")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R110")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 91.44 203.2 0)
 		(unit 1)
@@ -24087,6 +23764,72 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 259.08 181.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e78e1463-96dd-484a-9858-9dd14b12c43a")
+		(property "Reference" "#PWR0111"
+			(at 259.08 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 259.08 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 259.08 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 259.08 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 259.08 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "21bfc8f0-16db-4356-b07e-d4af947b53ab")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "#PWR0111")
 					(unit 1)
 				)
 			)
@@ -24258,6 +24001,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 201.93 199.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ed4f958e-abbb-4873-93fb-efbfe6a95c60")
+		(property "Reference" "R111"
+			(at 204.47 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 204.47 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 200.152 199.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field4" ""
+			(at 201.93 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C103199 "
+			(at 201.93 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc98522c-8734-4aa9-a17f-2fab2829a028")
+		)
+		(pin "2"
+			(uuid "cf29e41f-6c18-49af-bfec-1da69ffed802")
+		)
+		(instances
+			(project "mod-badge-inercia"
+				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
+					(reference "R111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:L")
 		(at 138.43 43.18 90)
 		(unit 1)
@@ -24403,92 +24234,6 @@
 			(project "mod-badge-inercia"
 				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
 					(reference "#PWR040")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 365.76 76.2 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "f4378cc3-3b61-490a-9f56-fa47e80ff6e6")
-		(property "Reference" "R13"
-			(at 365.76 69.85 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DNI"
-			(at 365.76 72.39 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 365.76 77.978 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 365.76 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 365.76 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field4" ""
-			(at 365.76 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C95177"
-			(at 365.76 76.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0b000c11-4b7f-4578-8601-2336c6696695")
-		)
-		(pin "2"
-			(uuid "6ae7cf55-2a58-4176-9736-011c754dac56")
-		)
-		(instances
-			(project "mod-badge-inercia"
-				(path "/fc4b54b0-e5c8-4bf5-982a-c733a92211c4"
-					(reference "R13")
 					(unit 1)
 				)
 			)

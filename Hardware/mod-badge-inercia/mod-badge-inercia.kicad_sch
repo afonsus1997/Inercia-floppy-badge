@@ -13642,9 +13642,9 @@
 		(at 93.98 252.73 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3f83fd11-25df-431e-8b66-d736692043f6")
 		(property "Reference" "R101"
@@ -18415,9 +18415,9 @@
 		(at 102.87 252.73 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "9cebe382-ab07-44c5-9939-5439b6ea4f03")
 		(property "Reference" "R102"

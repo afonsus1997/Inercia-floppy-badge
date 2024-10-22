@@ -519,7 +519,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "GERBERs/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "mod-badge-inercia.step",

@@ -172,4 +172,15 @@
 		(remove_unused_layers no)
 		(uuid "196cad96-194c-448a-a79d-d20dbcb2f987")
 	)
+	(model "${KIPRJMOD}/libraries/3d/3x AAA battery holder_update.stp"
+		(offset
+			(xyz 2 5.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
 )

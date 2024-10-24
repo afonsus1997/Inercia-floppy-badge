@@ -151,21 +151,9 @@
 		(remove_unused_layers no)
 		(uuid "37db0390-9a01-46a5-afbc-ad1cbaae159f")
 	)
-	(model "${THISPTR_LBR_DIR}/kicad-oled-ssd1306-128x32/OLED-SSD1306-128x32-0.91.3dshapes/OLED_SSD1306_128x32_0.91.stp"
-		(hide yes)
+	(model "${KIPRJMOD}/libraries/3d/oled.step"
 		(offset
-			(xyz 20 -6.5 3)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
-	(model "${THISPTR_LBR_DIR}/kicad-oled-ssd1306-128x32/OLED-SSD1306-128x32-0.91.3dshapes/OLED_SSD1306_128x32_0.91_PIN_HEADER.stp"
-		(offset
-			(xyz 20 -6.5 11)
+			(xyz 20 -6.5 -4.3)
 		)
 		(scale
 			(xyz 1 1 1)

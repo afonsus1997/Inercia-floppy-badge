@@ -33,8 +33,8 @@ void setup() {
      We're using this on a Pico with alternative pinout
      setting them up here, before calling display.begin
   */
-  Wire.setSDA(16);
-  Wire.setSCL(17);
+  Wire.setSDA(0);
+  Wire.setSCL(1);
 
   // SSD1306_SWITCHCAPVCC init
   if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {

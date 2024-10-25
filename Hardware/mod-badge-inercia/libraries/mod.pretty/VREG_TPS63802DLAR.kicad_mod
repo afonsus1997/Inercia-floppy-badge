@@ -638,4 +638,15 @@
 		(roundrect_rratio 0.2)
 		(uuid "3e47da5d-6adc-4724-a8d0-d418d3ec186b")
 	)
+	(model "${KIPRJMOD}/libraries/3d/VSON-10_L3.0-W2.0-P0.50-TL.step"
+		(offset
+			(xyz 0 0 0.9)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

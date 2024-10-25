@@ -50,3 +50,4 @@ Below are some pictures and renders of the project to give you a closer look:
 - battery holder 3d model from Tomasz (https://grabcad.com/library/3-x-aaa-battery-holder)
 - potentiometer model from NGOUBO OLIVIER (https://grabcad.com/library/potentiometer-52)
 - push button model from Shawn Melanson (https://grabcad.com/library/skrpace010-push-button-switch-1)
+-picoblade model from Владимир «AVRASM1234» Иванишин (https://grabcad.com/library/molex-picoblade-connectors-1-25-mm-right-angle-1)

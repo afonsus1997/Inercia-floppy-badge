@@ -3238,7 +3238,7 @@
 				)
 			)
 		)
-		(symbol "Device:Q_PMOS_DSG"
+		(symbol "Device:Q_PMOS_SGD"
 			(pin_names
 				(offset 0) hide)
 			(exclude_from_sim no)
@@ -3253,7 +3253,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "Q_PMOS_DSG"
+			(property "Value" "Q_PMOS_SGD"
 				(at 5.08 -1.27 0)
 				(effects
 					(font
@@ -3280,7 +3280,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "P-MOSFET transistor, drain/source/gate"
+			(property "Description" "P-MOSFET transistor, source/gate/drain"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3298,7 +3298,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "Q_PMOS_DSG_0_1"
+			(symbol "Q_PMOS_SGD_0_1"
 				(polyline
 					(pts
 						(xy 0.254 0) (xy -2.54 0)
@@ -3465,11 +3465,11 @@
 					)
 				)
 			)
-			(symbol "Q_PMOS_DSG_1_1"
+			(symbol "Q_PMOS_SGD_1_1"
 				(pin passive line
-					(at 2.54 5.08 270)
+					(at 2.54 -5.08 90)
 					(length 2.54)
-					(name "D"
+					(name "S"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3484,10 +3484,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 2.54 -5.08 90)
+				(pin input line
+					(at -5.08 0 0)
 					(length 2.54)
-					(name "S"
+					(name "G"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3502,10 +3502,10 @@
 						)
 					)
 				)
-				(pin input line
-					(at -5.08 0 0)
+				(pin passive line
+					(at 2.54 5.08 270)
 					(length 2.54)
-					(name "G"
+					(name "D"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -23741,7 +23741,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PMOS_DSG")
+		(lib_id "Device:Q_PMOS_SGD")
 		(at 143.51 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -23786,7 +23786,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "P-MOSFET transistor, drain/source/gate"
+		(property "Description" "P-MOSFET transistor, source/gate/drain"
 			(at 143.51 41.91 0)
 			(effects
 				(font

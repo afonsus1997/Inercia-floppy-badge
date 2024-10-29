@@ -24770,7 +24770,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 212.852 50.8 90)
 			(effects
 				(font
@@ -24806,7 +24806,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C5126239"
+		(property "LCSC" "C2684557"
 			(at 214.63 50.8 0)
 			(effects
 				(font
@@ -25350,7 +25350,7 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)

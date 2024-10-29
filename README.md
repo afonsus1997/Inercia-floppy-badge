@@ -1,30 +1,34 @@
 
 # Inércia 2024 Floppy Badge
 
+![Top View](link-to-top-view-image)
+
 ## Introduction
 
+Work in Progress
 
+## Sponsors
+
+![JLCPCB LOGO](https://i.imgur.com/jD1Z4sq.png)
+
+JLCPCB helped make this project possible! All the manufacturing and assembly of the prototypes and the final badges were made using JLCPCB services.
+
+[Check out JLCPCB here!](https://jlcpcb.com/)
 
 ## Specifications and Features
 
-- **Processor:** [Processor Name and Specs]
-- **Memory:** [Memory Size and Type]
-- **Power Supply:** [Voltage and Power Requirements]
-- **Connectivity:** [List of available ports and wireless features]
-- **Dimensions:** [Dimensions of the project (length x width x height)]
-- **Weight:** [Weight of the device]
-- **Additional Features:**
-  - [Feature 1]
-  - [Feature 2]
-  - [Feature 3]
-  
+- **Processor:** RP2040
+- **Memory:** 264kB on-chip SRAM, 32Mb external flash
+- **Power Supply:** USB or 3xAAA
+- **Connectivity:** USB, external GPIO, SAO
+- **Dimensions:** Very close to a real floppy!
 ## Design Files and Schematics
 
 All design files, including schematics, PCB layouts, and 3D models, are available for download:
 
-- [PCB Design Files](link-to-pcb-files)
-- [Schematic Diagrams](link-to-schematics)
-- [3D Models (STL/STEP)](link-to-3d-models)
+- [Kicad Project folder](Hardware/mod-badge-inercia)
+- [Schematic PDF](Hardware/mod-badge-inercia/mod-badge-inercia.pdf)
+- [3D Models (STEP)](Hardware/mod-badge-inercia/mod-badge-inercia.step)
 
 ## Pictures and Renders
 
@@ -35,11 +39,6 @@ Below are some pictures and renders of the project to give you a closer look:
 - ![3D Render](link-to-render-image)
 
 ## Changelog
-
-### v1.1.0 - [YYYY-MM-DD]
-- [New Feature 1]
-- [Improvement 1]
-- [Bug Fix 1]
 
 
 ### Credits

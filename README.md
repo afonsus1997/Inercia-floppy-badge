@@ -1,7 +1,7 @@
 
 # Inércia 2024 Floppy Badge
 
-![Render](Media/2024/renders/render.png)
+![Render](Media/2024/Renders/render.png)
 
 ## Introduction
 

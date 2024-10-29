@@ -1,7 +1,0 @@
-(fp_lib_table
-  (version 7)
-  (lib (name "mod")(type "KiCad")(uri "${KIPRJMOD}/libraries/mod.pretty")(options "")(descr ""))
-  (lib (name "gfx")(type "KiCad")(uri "${KIPRJMOD}/libraries/gfx.pretty")(options "")(descr ""))
-  (lib (name "gfx_lib")(type "KiCad")(uri "${KIPRJMOD}/libraries/gfx_lib.pretty")(options "")(descr ""))
-  (lib (name "gfxx")(type "KiCad")(uri "${KIPRJMOD}/libraries/gfxx.pretty")(options "")(descr ""))
-)

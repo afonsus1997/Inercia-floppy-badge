@@ -1,0 +1,148 @@
+(footprint "BAT-TH_BH-AAA-A1AJ024"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -9.8 0)
+		(layer "F.SilkS")
+		(uuid "29212efa-7a9f-4d3a-ac80-d622cee103bd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "BAT-TH_BH-AAA-A1AJ024"
+		(at 0 9.8 0)
+		(layer "F.Fab")
+		(uuid "03f5047e-7184-4bce-b9c7-34fde0062cd3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f94f7ea9-83b9-4254-9f48-a8cec97cabe7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6c3787c7-d788-4aff-ac49-8b254b03e175")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3d20168d-7ab6-48ad-a25a-3005b3665b62")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -49.86 -24.34)
+		(end 2.21 -24.34)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a96a305e-09b4-41dd-b34c-c6ff180c1789")
+	)
+	(fp_line
+		(start -49.86 -23.83)
+		(end -49.86 -24.34)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "16185b1f-5687-4edb-8928-ddcde07447a7")
+	)
+	(fp_line
+		(start -49.86 12.74)
+		(end -49.86 -23.83)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "12e32f4d-b167-49f0-9cff-bc8eae582c45")
+	)
+	(fp_line
+		(start 2.21 -24.34)
+		(end 2.21 12.74)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "87b4d975-2aab-4bbc-8906-66dd3da9000a")
+	)
+	(fp_line
+		(start 2.21 12.74)
+		(end -49.86 12.74)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ef3c94cc-d7a4-4dfc-9b56-8fb6200b3856")
+	)
+	(fp_circle
+		(center -49.82 -24.3)
+		(end -49.79 -24.3)
+		(stroke
+			(width 0.06)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "34379657-3f7a-4080-a02c-bbd23c04358c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "14686f96-d0e1-443d-874d-70d65864acff")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(model "${KIPRJMOD}/libraries/3d/3x AAA battery holder_update.stp"
+		(offset
+			(xyz 2 5.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
+)

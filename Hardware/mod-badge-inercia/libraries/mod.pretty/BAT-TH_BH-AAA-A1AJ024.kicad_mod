@@ -123,28 +123,6 @@
 		(layer "F.Fab")
 		(uuid "34379657-3f7a-4080-a02c-bbd23c04358c")
 	)
-	(fp_circle
-		(center 0 -5.8)
-		(end 0.22 -5.8)
-		(stroke
-			(width 0.45)
-			(type solid)
-		)
-		(fill none)
-		(layer "F.Fab")
-		(uuid "43a10d5d-3f95-452b-91db-3e290186dd46")
-	)
-	(fp_circle
-		(center 0 5.8)
-		(end 0.22 5.8)
-		(stroke
-			(width 0.45)
-			(type solid)
-		)
-		(fill none)
-		(layer "F.Fab")
-		(uuid "bc14b762-2b28-4031-9bc2-0fa4a79f44f0")
-	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
@@ -155,22 +133,6 @@
 				(thickness 0.15)
 			)
 		)
-	)
-	(pad "1" thru_hole circle
-		(at 0 5.8)
-		(size 1.9 1.9)
-		(drill 1.199998)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "9f9cc118-ab17-41a6-9dae-01217b830cd5")
-	)
-	(pad "2" thru_hole circle
-		(at 0 -5.8)
-		(size 1.9 1.9)
-		(drill 1.199998)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "196cad96-194c-448a-a79d-d20dbcb2f987")
 	)
 	(model "${KIPRJMOD}/libraries/3d/3x AAA battery holder_update.stp"
 		(offset

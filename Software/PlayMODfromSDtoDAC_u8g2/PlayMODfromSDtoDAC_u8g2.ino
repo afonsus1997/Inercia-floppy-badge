@@ -194,9 +194,7 @@ void core1_displayTask() {
     while (true) {
         // Animation logic
         u8g2.clearBuffer();
-        if (!displayingNowPlaying) {
-            drawRotatedBitmap(swing, swing / 3, inercia_bmp, INERCIA_W, INERCIA_H, rotation);
-        }
+        drawRotatedBitmap(swing, swing / 3, inercia_bmp, INERCIA_W, INERCIA_H, rotation);
 
         // Safely read nowPlaying using critical section
         noInterrupts();
@@ -375,6 +373,9 @@ void drawVolumePopup(int volume) {
     u8g2.print(volumeText); // Display the volume text
 }
 
+int scrollOffset = 0; // Offset for scrolling text
+int scrollSpeed = 1;  // Speed of scrolling
+
 void drawNowPlaying(const String& nowPlaying) {
     // Prepare text for display
     String nowPlayingText = "Now Playing:";
@@ -442,4 +443,3 @@ void drawNowPlaying(const String& nowPlaying) {
     u8g2.setCursor(x + padding, y + padding + textHeight + padding + (textHeight - u8g2.getFontDescent())); // Position file name text inside the box
     u8g2.print(truncatedNowPlaying); // Display the truncated current file name
 }
-

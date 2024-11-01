@@ -1,253 +1,288 @@
 #include <Arduino.h>
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include "inercia_bitmap.h"
 #include "AudioGeneratorMOD.h"
 #include "AudioOutputI2S.h"
 #include "AudioFileSourceSD.h"
-#include <SPI.h>
-#include <Wire.h>
-#include <SD.h>
-#include <math.h>
-    // .miso_gpio = 12,  // GPIO number (not Pico pin number)
-    // .mosi_gpio = 15,
-    // .sck_gpio = 14,
-    // .ss_gpio = 13,
+#include <pico/multicore.h>
+#include <pico/mutex.h>
 
-AudioGeneratorMOD *mod;
-AudioFileSourceSD *fileO;
-AudioOutputI2S *out;
-uint16_t FileCount; //in root
-unsigned long seed;
+// OLED Display Configuration
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 32
+#define SCREEN_ADDRESS 0x3C
+#define MINSWING 1
+#define MAXSWING 64
 
+// Audio and Button Configuration
 #define TOP_BUTTON 5
 #define MID_BUTTON 6
 #define BOT_BUTTON 4
 #define POT_PIN A0
 
-int buttonStateTop;  // HIGH means not pressed, LOW means pressed
-int buttonStateMid;  // HIGH means not pressed, LOW means pressed
-int buttonStateBot;  // HIGH means not pressed, LOW means pressed
+// Mutex for shared variables
+mutex_t file_mutex;
+bool fileChanged = false; // Flag to signal file change
+int fileIndex = 0;
+float volume = 0.1;
+bool isLoading = false;
 
-int lastButtonStateTop = HIGH;  // HIGH means not pressed, LOW means pressed
-int lastButtonStateMid = HIGH;  // HIGH means not pressed, LOW means pressed
-int lastButtonStateBot = HIGH;  // HIGH means not pressed, LOW means pressed
+// Variables for Animation
+int rotation;
+uint8_t swing;
+uint8_t counter;
+uint8_t once_every;
+bool swing_direction;
 
-unsigned long lastDebounceTimeTop = 0;  // the last time the output pin was toggled
-unsigned long lastDebounceTimeMid = 0;  // the last time the output pin was toggled
-unsigned long lastDebounceTimeBot = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+// Display Setup
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-int activatedTop = 0;  // HIGH means not pressed, LOW means pressed
-int activatedMid = 0;  // HIGH means not pressed, LOW means pressed
-int activatedBot = 0;  // HIGH means not pressed, LOW means pressed
+// Audio Setup
+AudioGeneratorMOD *mod;
+AudioFileSourceSD *fileO;
+AudioOutputI2S *out;
+uint16_t fileCount = 0;
 
-int file2open;
-float currVol;
+// Button states and debounce
+struct Button {
+    int pin;
+    int state;
+    int lastState = HIGH;
+    unsigned long lastDebounceTime = 0;
+    bool activated = false;
+};
 
-float vol;
+Button topButton = {TOP_BUTTON, HIGH};
+Button midButton = {MID_BUTTON, HIGH};
+Button botButton = {BOT_BUTTON, HIGH};
+unsigned long debounceDelay = 50;
 
-int loading = 0;
+// Function Prototypes
+void core1_displayTask();
+void setupDisplayAndAnimation();
+void readButtons();
+void checkButton(Button &button);
+void handleButtonActions();
+void resetButtonActivations();
+void playFile(int index);
+void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t width, uint8_t height, int angle);
+void core0_audioTask();
 
-
-void setup() {  ////////////////////////////setup start
-  currVol = 0.1;
-  Serial.begin(115200);
-
-  pinMode(TOP_BUTTON, INPUT);
-  pinMode(MID_BUTTON, INPUT);
-  pinMode(BOT_BUTTON, INPUT);
-  pinMode(POT_PIN, INPUT);
+void setup() {
   
+    Serial.begin(115200);
+    delay(1000);    
+    // Initialize button pins
+    pinMode(topButton.pin, INPUT);
+    pinMode(midButton.pin, INPUT);
+    pinMode(botButton.pin, INPUT);
+    pinMode(POT_PIN, INPUT);
 
-  // fileO = new AudioFileSourceSD(entry.name());  
-  out = new AudioOutputI2S(22000, 20, 22);
-  out->SetGain(0.05);
-  mod = new AudioGeneratorMOD();
-  mod->SetBufferSize(1 * 1024);  ///3
-  mod->SetSampleRate(22000);
-  mod->SetStereoSeparation(64);  // upto64 64-no separation! 0-max and ugly!
-
-  Serial.printf("MOD start\n");
-  if (!SD.begin(13,1000000UL * (1000), SPI1)) {
-    Serial.println("SD initialization failed!");
-    while (1);
-  }
-  File root = SD.open("/mods");
-  // printDirectory(root);
-  while (true) {
-    File entry =  root.openNextFile();
-    if (! entry) {
-      // no more files
-      break;
-    }
-
-    if (entry.isDirectory()) {
-    } else {
-
-      if (!strcasecmp(entry.name() + strlen(entry.name()) - 4, ".mod")) {
-        FileCount++;
-      }
-    }
-    entry.close();
-  }
-  Serial.print("MODs found:");
-  Serial.println(FileCount);
-  randomSeed(analogRead(A1));
-  file2open = random(0, FileCount-1);
-  PlayFile(file2open);
-  loading = 1;
-}            //////////////////////////////setup end
-
-
-void readButton(){
-  int readingTop = digitalRead(TOP_BUTTON);
-  int readingMid = digitalRead(MID_BUTTON);
-  int readingBot = digitalRead(BOT_BUTTON);
-
-  // Check if the button state has changed
-  if (readingTop != lastButtonStateTop) {
-    // Reset the debouncing timer
-    lastDebounceTimeTop = millis();
-  }
-  if (readingMid != lastButtonStateMid) {
-    // Reset the debouncing timer
-    lastDebounceTimeMid = millis();
-  }
-  if (readingBot != lastButtonStateBot) {
-    // Reset the debouncing timer
-    lastDebounceTimeBot = millis();
-  }
-
-  // Check if enough time has passed to consider it a valid button press
-  if ((millis() - lastDebounceTimeTop) > debounceDelay) {
-    // Update the button state only if it has changed
-    // Serial.printf("readingTop:%d buttonStateTop:%d\n", readingTop, buttonStateTop);
-    if (readingTop != buttonStateTop) {
-      buttonStateTop = readingTop;
-
-      // If the button is pressed, do something (replace this with your desired action)
-      if (buttonStateTop == LOW) {
-        Serial.println("Top Button pressed!");
-        activatedTop = 1;
-      }
-    }
-  }
-
-  // Check if enough time has passed to consider it a valid button press
-  if ((millis() - lastDebounceTimeMid) > debounceDelay) {
-    // Update the button state only if it has changed
-    // Serial.printf("readingTop:%d buttonStateTop:%d\n", readingTop, buttonStateTop);
-    if (readingMid != buttonStateMid) {
-      buttonStateMid = readingMid;
-      // If the button is pressed, do something (replace this with your desired action)
-      if (buttonStateMid == LOW) {
-        Serial.println("Mid Button pressed!");
-        activatedMid = 1;
-      }
-    }
-  }
-
-  // Check if enough time has passed to consider it a valid button press
-  if ((millis() - lastDebounceTimeBot) > debounceDelay) {
-    // Update the button state only if it has changed
-    // Serial.printf("readingTop:%d buttonStateTop:%d\n", readingTop, buttonStateTop);
-    if (readingBot != buttonStateBot) {
-      buttonStateBot = readingBot;
-      // If the button is pressed, do something (replace this with your desired action)
-      if (buttonStateBot == LOW) {
-        Serial.println("Bot Button pressed!");
-        activatedBot = 1;
-      }
-    }
-  }
-
-  lastButtonStateTop = readingTop;
-  lastButtonStateMid = readingMid;
-  lastButtonStateBot = readingBot;
-}
-
-double linearToLogScale(double linearValue) {
-    // Ensure that the input value is in the range [0, 1]
-    linearValue = fmax(0.0, fmin(1.0, linearValue));
-
-    // Convert linear value to log scale (in dB)
-    double logScaleValue = 20.0 * log10(linearValue);
-
-    return logScaleValue;
-}
-
-
-void loop()  {           /////////////loop start
-  if(!loading)
-    readButton();
-
-  vol = map(analogRead(A0), 4, 1023, 0, 200)/100.0;
-  if (mod->isRunning()) {
-    if (!mod->loop()) mod->stop();
-    if(loading) loading = 0;
-    if(activatedTop || activatedMid || activatedBot){
-      mod->stop();
-      if(activatedTop  || activatedBot){
-      if(buttonStateTop == LOW){
-        // file2open = random(0, FileCount);
-        file2open = (file2open + 1) % FileCount;
-        Serial.printf("index: %d\n", file2open);
-        PlayFile(file2open);
-        loading = 1;
-      }
-      else if(buttonStateMid == LOW){
-        // file2open = (file2open + 1) % FileCount;
-      // PlayFile(file2open);
-      }
-      else if(buttonStateBot == LOW){
-        file2open = random(0, FileCount-1);
-      PlayFile(file2open);
-        loading = 1;
-      }
-    }
-  } }
-
-  else if(!activatedMid && !loading) {
-        Serial.printf("MOD done\n");
-        file2open = (file2open + 1) % FileCount;
-        PlayFile(file2open);
-
+    // Start core1 for display handling
+    multicore_launch_core1(core1_displayTask);
     
-  }
+    // Start audio handling on the main core
+    // Audio setup
+    out = new AudioOutputI2S(22000, 20, 22);
+    out->SetGain(volume);
+    mod = new AudioGeneratorMOD();
+    mod->SetBufferSize(1024);
+    mod->SetSampleRate(22000);
+    mod->SetStereoSeparation(64);
 
-  if(activatedTop) activatedTop = 0;
-  if(activatedMid) activatedMid = 0;
-  if(activatedBot) activatedBot = 0;
-  out->SetGain(vol);
-
-
-}                  //////////////////loop end
-
-void PlayFile(int file2open) { /////////////////PLAY
-  // file2open = random(0, FileCount); //-1
-  File root = SD.open("/");
-  root.rewindDirectory();
-
-  while (true) {
-    File entry =  root.openNextFile();
-    if (! entry) {
-      Serial.println("no more files");// no more files
-      break;
+    // Initialize SD card and count MOD files
+    if (!SD.begin(13, 1000000UL * 1000, SPI1)) {
+        Serial.println("SD initialization failed!");
+        while (1);
     }
-      if (file2open <= 0) {
-      if (!strcasecmp(entry.name() + strlen(entry.name()) - 4, ".mod")) {
-        Serial.printf("Playing:");
-        Serial.println(entry.name());
-        fileO = new AudioFileSourceSD(entry.name());  
-        // out->SetGain(0.8);
-        mod->SetBufferSize(1 * 1024);  ///3
-        mod->SetSampleRate(22000);
-        mod->SetStereoSeparation(64);  // upto64 64-no separation! 0-max and ugly!
-        mod->begin(fileO, out);  //out
+    Serial.println("SD initialized successfully.");
 
-        break;
-      }
-      // }
+    File root = SD.open("/");
+    if (!root) {
+        Serial.println("Failed to open /mods directory.");
+        return; // Exit if the directory cannot be opened
     }
-      file2open--;
-  }
-}               ///////////////////////PLAY
 
+    // List all MOD files found
+    Serial.println("Available MOD files:");
+    while (File entry = root.openNextFile()) {
+        if (!entry.isDirectory() && strstr(entry.name(), ".mod")) {
+            Serial.printf("Index %d: %s\n", fileCount, entry.name());
+            fileCount++;
+        }
+        entry.close();
+    }
+
+    if (fileCount == 0) {
+        Serial.println("No MOD files found.");
+        return; // Exit if no files were found
+    }
+
+    Serial.print("MODs found: ");
+    Serial.println(fileCount);
+
+    // Seed and play initial file
+    randomSeed(analogRead(A1));
+    fileIndex = random(0, fileCount);
+    playFile(fileIndex);
+    Serial.println("Playing file...");
+    isLoading = true;
+}
+
+// Main loop function
+void loop() {
+    if (!isLoading) {
+        readButtons();
+    }
+
+    // Adjust volume
+    volume = map(analogRead(POT_PIN), 4, 1023, 0, 100) / 100.0;
+    out->SetGain(volume);
+
+    if (mod->isRunning()) {
+        if (!mod->loop()) {
+            Serial.println("Audio loop finished.");
+            mod->stop();
+        }
+        isLoading = false;
+        handleButtonActions();
+    } else if (!isLoading && !midButton.activated) {
+        Serial.println("MOD done");
+        // Automatically play the next file if not mid button activated
+        fileIndex = (fileIndex + 1) % fileCount; // Play the next file in the list
+        playFile(fileIndex);
+    }
+
+    resetButtonActivations(); // Reset button states after processing
+}
+
+void core1_displayTask() {
+    // Initialize display
+    Wire.setSDA(0);
+    Wire.setSCL(1);
+    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+        Serial.println(F("SSD1306 startup failed"));
+        while (1);
+    }
+    display.dim(1);
+
+    // Initialize animation variables
+    counter = 0;
+    once_every = 4;
+    rotation = 0;
+    swing = MINSWING;
+    swing_direction = true;
+
+    while (true) {
+        // Animation logic
+        display.clearDisplay();
+        drawRotatedBitmap(swing, swing / 3, inercia_bmp, INERCIA_W, INERCIA_H, rotation);
+        display.display();
+
+        rotation = (rotation + 1) % 360;
+        if (++counter >= once_every) {
+            counter = 0;
+            swing += (swing_direction ? 1 : -1);
+            if (swing >= MAXSWING || swing <= MINSWING) swing_direction = !swing_direction;
+        }
+
+        // Add a short delay to prevent busy-waiting
+        sleep_ms(50);
+    }
+}
+
+void readButtons() {
+    checkButton(topButton);
+    checkButton(midButton);
+    checkButton(botButton);
+}
+
+void checkButton(Button &button) {
+    int reading = digitalRead(button.pin);
+
+    if (reading != button.lastState) {
+        button.lastDebounceTime = millis();
+    }
+
+    if ((millis() - button.lastDebounceTime) > debounceDelay && reading != button.state) {
+        button.state = reading;
+        if (button.state == LOW) {
+            button.activated = true;
+            Serial.printf("%s Button pressed!\n", button.pin == TOP_BUTTON ? "Top" : button.pin == MID_BUTTON ? "Mid" : "Bot");
+        }
+    }
+    button.lastState = reading;
+}
+
+void handleButtonActions() {
+    // Stop current playback if a button is activated
+    if (topButton.activated || botButton.activated) {
+        mod->stop();
+        if (topButton.activated) {
+            // Change to the next file, looping back to the start
+            fileIndex = (fileIndex + 1) % fileCount;
+            Serial.printf("Next file: %d\n", fileIndex);
+        } 
+        else if (botButton.activated) {
+            // Change to a random file
+            fileIndex = random(0, fileCount);
+            Serial.printf("Random file: %d\n", fileIndex);
+        }
+        playFile(fileIndex); // Play the selected file
+        isLoading = true; // Set loading flag
+    }
+}
+
+void resetButtonActivations() {
+    topButton.activated = false;
+    midButton.activated = false;
+    botButton.activated = false;
+}
+
+void playFile(int index) {
+    File root = SD.open("/mods");
+    root.rewindDirectory();
+
+    while (File entry = root.openNextFile()) {
+        if (index <= 0 && strstr(entry.name(), ".mod")) {
+            Serial.print("Playing: ");
+            Serial.println(entry.name());
+            fileO = new AudioFileSourceSD(entry.name());
+            mod->begin(fileO, out);
+            entry.close();
+            break;
+        }
+        entry.close();
+        index--;
+    }
+}
+
+void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t width, uint8_t height, int angle) {
+    int8_t old_x, old_y, new_x, new_y;
+    uint8_t pivot_x = width / 2;
+    uint8_t pivot_y = height / 2;
+    float angle_rad = angle / 57.3;
+    float sin_angle = sin(angle_rad);
+    float cos_angle = cos(angle_rad);
+
+    for (int row = 0; row < height; row++) {
+        uint8_t displayData, mask = 0;
+        for (int col = 0; col < width; col++) {
+            if (mask == 0) {
+                displayData = pgm_read_byte(bitmap++);
+                mask = 0x80;
+            }
+            if (displayData & mask) {
+                old_x = col - pivot_x;
+                old_y = row - pivot_y;
+                new_x = (int)(old_x * cos_angle - old_y * sin_angle) + pivot_x + x;
+                new_y = (int)(old_x * sin_angle + old_y * cos_angle) + pivot_y + y;
+                display.drawPixel(new_x, new_y, WHITE);
+            }
+            mask >>= 1;
+        }
+    }
+}

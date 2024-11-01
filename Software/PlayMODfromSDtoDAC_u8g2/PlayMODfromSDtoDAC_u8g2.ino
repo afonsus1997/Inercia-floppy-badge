@@ -25,6 +25,7 @@
 bool fileChanged = false;  // Flag to signal file change
 int fileIndex = 0;
 float volume = 0.1;
+float previousVolume = 0.1;
 bool isLoading = false;
 
 // Variables for Animation
@@ -36,7 +37,6 @@ bool swing_direction;
 
 // Display Setup
 U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0);  // U8g2 display setup
-
 
 // Audio Setup
 AudioGeneratorMOD *mod;
@@ -63,6 +63,10 @@ char nowPlaying[30];                // Buffer for the currently playing file nam
 bool displayingNowPlaying = false;  // Flag to control now playing visibility
 unsigned long displayTime = 0;      // Time when the now playing message was displayed
 
+// Shared variables for volume popup
+bool displayingVolumePopup = false; // Single flag for volume popup
+unsigned long volumePopupTime = 0;  // Timer for the popup duration
+
 // Function Prototypes
 void core1_displayTask();
 void readButtons();
@@ -72,6 +76,8 @@ void resetButtonActivations();
 void playFile(int index);
 void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t width, uint8_t height, int angle);
 void core0_audioTask();
+void drawVolumePopup(int volume);
+void drawNowPlaying(const String& nowPlaying);
 
 void setup() {
   Serial.begin(115200);
@@ -86,7 +92,6 @@ void setup() {
   multicore_launch_core1(core1_displayTask);
 
   // Start audio handling on the main core
-  // Audio setup
   out = new AudioOutputI2S(22000, 20, 22);
   out->SetGain(volume);
   mod = new AudioGeneratorMOD();
@@ -97,8 +102,7 @@ void setup() {
   // Initialize SD card and count MOD files
   if (!SD.begin(13, 1000000UL * 1000, SPI1)) {
     Serial.println("SD initialization failed!");
-    while (1)
-      ;
+    while (1);
   }
   Serial.println("SD initialized successfully.");
 
@@ -141,8 +145,22 @@ void loop() {
   }
 
   // Adjust volume
-  volume = map(analogRead(POT_PIN), 4, 1023, 0, 100) / 100.0;
-  out->SetGain(volume);
+  float newVolume = map(analogRead(POT_PIN), 4, 1023, 0, 100) / 100.0;
+
+  // Check if volume change exceeds 2%
+  if (abs(newVolume - previousVolume) > 0.03) {
+      displayingVolumePopup = true; // Show the volume popup
+      volumePopupTime = millis();   // Reset the timer for popup
+      previousVolume = newVolume;    // Update the previous volume
+  }
+  
+  // Update the audio output gain
+  out->SetGain(newVolume);
+
+  // Hide the volume popup after 1 second
+  if (displayingVolumePopup && (millis() - volumePopupTime >= 1000)) {
+      displayingVolumePopup = false; // Hide the popup after 1 second
+  }
 
   if (mod->isRunning()) {
     if (!mod->loop()) {
@@ -153,7 +171,6 @@ void loop() {
     handleButtonActions();
   } else if (!isLoading && !midButton.activated) {
     Serial.println("MOD done");
-    // Automatically play the next file if not mid button activated
     fileIndex = (fileIndex + 1) % fileCount;  // Play the next file in the list
     playFile(fileIndex);
   }
@@ -187,16 +204,12 @@ void core1_displayTask() {
         u8g2.setDrawColor(1); // Set color to white
         
         if (displayingNowPlaying) {
-            // Draw sound emotes using icons from the font
-            u8g2.setFont(u8g2_font_open_iconic_all_1x_t); // Switch to an icon font
-            u8g2.drawGlyph(0, 8, 0xE1); // Example icon glyph for speaker (adjust the code as needed)
-            u8g2.setCursor(12, 10); // Position to draw the text
-            u8g2.setFont(u8g2_font_5x8_tr); // Switch back to text font
-            u8g2.print("Now Playing:"); // Title
-            
-            u8g2.setCursor(0, 20); // Move cursor to the next line
-            u8g2.print(nowPlaying); // Display the current file name
-            
+            drawNowPlaying(nowPlaying);
+        }
+
+        // Draw volume popup if necessary
+        if (displayingVolumePopup) {
+            drawVolumePopup((int)(previousVolume * 100)); // Convert previous volume to percentage
         }
         
         interrupts();
@@ -238,15 +251,13 @@ void checkButton(Button &button) {
     button.state = reading;
     if (button.state == LOW) {
       button.activated = true;
-      Serial.printf("%s Button pressed!\n", button.pin == TOP_BUTTON ? "Top" : button.pin == MID_BUTTON ? "Mid"
-                                                                                                        : "Bot");
+      Serial.printf("%s Button pressed!\n", button.pin == TOP_BUTTON ? "Top" : button.pin == MID_BUTTON ? "Mid" : "Bot");
     }
   }
   button.lastState = reading;
 }
 
 void handleButtonActions() {
-  // Stop current playback if a button is activated
   if (topButton.activated || botButton.activated) {
     mod->stop();
     if (topButton.activated) {
@@ -261,6 +272,13 @@ void handleButtonActions() {
     playFile(fileIndex);  // Play the selected file
     isLoading = true;     // Set loading flag
   }
+  if (midButton.activated) {
+    // Handle mid button action
+    displayingNowPlaying = true; // Show now playing message
+    displayTime = millis(); // Reset display time
+    strcpy(nowPlaying, "Sample File Name"); // Update with the actual file name
+  }
+  
 }
 
 void resetButtonActivations() {
@@ -325,3 +343,103 @@ void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t widt
     }
   }
 }
+
+
+void drawVolumePopup(int volume) {
+    // Prepare text for display
+    String volumeText = "Vol: " + String(volume) + "%";
+
+    // Calculate text width and height
+    int textWidth = u8g2.getStrWidth(volumeText.c_str());
+    int textHeight = u8g2.getFontAscent() - u8g2.getFontDescent(); // Height of the text box
+
+    // Calculate dimensions and position for the popup box
+    int padding = 4; // Padding around the text
+    int boxWidth = textWidth + 2 * padding; // Box width based on text width and padding
+    int boxHeight = textHeight + 2 * padding; // Box height based on text height and padding
+    int x = (128 - boxWidth) / 2; // Center the box horizontally
+    int y = (32 - boxHeight) / 2; // Center the box vertically
+
+    // Draw the outline (white)
+    u8g2.setDrawColor(1); // Set color to white for outline
+    u8g2.drawFrame(x, y, boxWidth, boxHeight); // Draw the outline frame
+
+    // Fill the box (black)
+    u8g2.setDrawColor(0); // Set color to black for filling
+    u8g2.drawBox(x + 1, y + 1, boxWidth - 2, boxHeight - 2); // Draw filled box with padding for outline
+
+    // Set text properties
+    u8g2.setDrawColor(1); // Set color to white for text
+    u8g2.setFont(u8g2_font_5x8_tr); // Set font for popup
+    u8g2.setCursor(x + padding, y + padding + textHeight - u8g2.getFontDescent()); // Position the text inside the box, adjusted for descent
+    u8g2.print(volumeText); // Display the volume text
+}
+
+void drawNowPlaying(const String& nowPlaying) {
+    // Prepare text for display
+    String nowPlayingText = "Now Playing:";
+    
+    // Set the maximum box width based on the screen size
+    const int maxBoxWidth = 128;
+
+    // Define padding
+    int padding = 4; // Padding around the text
+
+    // Calculate text height
+    int textHeight = u8g2.getFontAscent() - u8g2.getFontDescent(); // Height of the text
+
+    // Calculate the width for the music glyph
+    int musicGlyphWidth = 10; // Adjust this value based on your glyph size
+
+    // Calculate the width for the title text
+    int titleTextWidth = u8g2.getStrWidth(nowPlayingText.c_str());
+
+    // Start with the full nowPlaying text
+    String truncatedNowPlaying = nowPlaying;
+    int fileNameWidth = u8g2.getStrWidth(truncatedNowPlaying.c_str());
+    
+    // Calculate total width required for title and glyph
+    int totalWidth = titleTextWidth + musicGlyphWidth + 2 * padding; // Title + glyph + padding
+    
+    // Calculate box width and ensure it doesn't exceed the max width
+    int boxWidth = max(totalWidth, fileNameWidth + 2 * padding); // Box width based on text widths
+    if (boxWidth > maxBoxWidth) boxWidth = maxBoxWidth; // Ensure box width does not exceed screen width
+
+    // Adjust the box width based on the title and glyph size
+    int availableWidth = boxWidth - totalWidth;
+    fileNameWidth = availableWidth;
+
+    // Truncate the nowPlaying text if it exceeds the available width
+    while (fileNameWidth > availableWidth && truncatedNowPlaying.length() > 0) {
+        truncatedNowPlaying.remove(truncatedNowPlaying.length() - 1); // Remove last character
+    }
+
+    // Calculate the final box height and position
+    int boxHeight = textHeight * 2 + 3 * padding; // Box height for two lines of text and padding
+    int x = (maxBoxWidth - boxWidth) / 2; // Center the box horizontally
+    int y = (32 - boxHeight) / 2; // Center the box vertically
+
+    // Draw the outline (white)
+    u8g2.setDrawColor(1); // Set color to white for outline
+    u8g2.drawFrame(x, y, boxWidth, boxHeight); // Draw the outline frame
+
+    // Fill the box (black)
+    u8g2.setDrawColor(0); // Set color to black for filling
+    u8g2.drawBox(x + 1, y + 1, boxWidth - 2, boxHeight - 2); // Draw filled box with padding for outline
+
+    // Draw music glyph
+    u8g2.setFont(u8g2_font_open_iconic_all_1x_t); // Switch to an icon font
+    u8g2.setDrawColor(1); // Set color to white for the glyph
+    u8g2.drawGlyph(x + padding, y + padding + textHeight - u8g2.getFontDescent(), 0xE1); // Music icon position
+
+    // Set text properties for the title
+    u8g2.setDrawColor(1); // Set color to white for text
+    u8g2.setFont(u8g2_font_5x8_tr); // Set font for title
+    u8g2.setCursor(x + padding + musicGlyphWidth, y + padding + textHeight - u8g2.getFontDescent()); // Position title text inside the box
+    u8g2.print(nowPlayingText); // Display the title text
+
+    // Set text properties for the truncated file name
+    u8g2.setCursor(x + padding, y + padding + textHeight + padding + (textHeight - u8g2.getFontDescent())); // Position file name text inside the box
+    u8g2.print(truncatedNowPlaying); // Display the truncated current file name
+}
+

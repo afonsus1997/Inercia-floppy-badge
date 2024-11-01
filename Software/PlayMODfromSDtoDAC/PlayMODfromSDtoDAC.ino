@@ -8,12 +8,11 @@
 #include "AudioOutputI2S.h"
 #include "AudioFileSourceSD.h"
 #include <pico/multicore.h>
-#include <pico/mutex.h>
 
 // OLED Display Configuration
+#define SCREEN_ADDRESS 0x3C
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 32
-#define SCREEN_ADDRESS 0x3C
 #define MINSWING 1
 #define MAXSWING 64
 
@@ -23,8 +22,6 @@
 #define BOT_BUTTON 4
 #define POT_PIN A0
 
-// Mutex for shared variables
-mutex_t file_mutex;
 bool fileChanged = false; // Flag to signal file change
 int fileIndex = 0;
 float volume = 0.1;
@@ -60,9 +57,13 @@ Button midButton = {MID_BUTTON, HIGH};
 Button botButton = {BOT_BUTTON, HIGH};
 unsigned long debounceDelay = 50;
 
+// Shared variables for now playing message
+char nowPlaying[30]; // Buffer for the currently playing file name
+bool displayingNowPlaying = false; // Flag to control now playing visibility
+unsigned long displayTime = 0;      // Time when the now playing message was displayed
+
 // Function Prototypes
 void core1_displayTask();
-void setupDisplayAndAnimation();
 void readButtons();
 void checkButton(Button &button);
 void handleButtonActions();
@@ -72,7 +73,6 @@ void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t widt
 void core0_audioTask();
 
 void setup() {
-  
     Serial.begin(115200);
     delay(1000);    
     // Initialize button pins
@@ -179,18 +179,38 @@ void core1_displayTask() {
     while (true) {
         // Animation logic
         display.clearDisplay();
-        drawRotatedBitmap(swing, swing / 3, inercia_bmp, INERCIA_W, INERCIA_H, rotation);
-        display.display();
+        if(!displayingNowPlaying)
+          drawRotatedBitmap(swing, swing / 3, inercia_bmp, INERCIA_W, INERCIA_H, rotation);
 
-        rotation = (rotation + 1) % 360;
+        // Safely read nowPlaying using critical section
+        noInterrupts();
+        display.setCursor(0, 0); // Position to draw the text
+        display.setTextSize(1); // Set the text size
+        display.setTextColor(WHITE); // Set text color
+        
+        if (displayingNowPlaying) {
+            display.print("Now Playing:"); // Add music note emojis
+            display.setCursor(0, 10); // Move cursor to the next line
+            display.print(nowPlaying); // Display the current file name
+        }
+        
+        interrupts();
+
+        display.display();
+        rotation = (rotation + 1) % 360; // Increment the rotation angle
         if (++counter >= once_every) {
             counter = 0;
             swing += (swing_direction ? 1 : -1);
             if (swing >= MAXSWING || swing <= MINSWING) swing_direction = !swing_direction;
         }
 
+        // Check if we need to hide the now playing message
+        if (displayingNowPlaying && (millis() - displayTime >= 3000)) {
+            displayingNowPlaying = false; // Hide the now playing message
+        }
+
         // Add a short delay to prevent busy-waiting
-        sleep_ms(50);
+        delay(10);
     }
 }
 
@@ -250,6 +270,18 @@ void playFile(int index) {
         if (index <= 0 && strstr(entry.name(), ".mod")) {
             Serial.print("Playing: ");
             Serial.println(entry.name());
+
+            // Safely update nowPlaying using critical section
+            noInterrupts();
+            strncpy(nowPlaying, entry.name(), sizeof(nowPlaying) - 1);
+            nowPlaying[sizeof(nowPlaying) - 1] = '\0'; // Ensure null termination
+
+            // Show now playing message
+            displayingNowPlaying = true; // Set flag to show the now playing message
+            displayTime = millis();       // Store the current time for display duration
+
+            interrupts();
+
             fileO = new AudioFileSourceSD(entry.name());
             mod->begin(fileO, out);
             entry.close();
@@ -264,7 +296,7 @@ void drawRotatedBitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t widt
     int8_t old_x, old_y, new_x, new_y;
     uint8_t pivot_x = width / 2;
     uint8_t pivot_y = height / 2;
-    float angle_rad = angle / 57.3;
+    float angle_rad = angle / 57.3; // Convert to radians
     float sin_angle = sin(angle_rad);
     float cos_angle = cos(angle_rad);
 

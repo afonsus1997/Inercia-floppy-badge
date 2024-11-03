@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Work in Progress
+Missed last year’s Inércia 2023 badge? This year, they’re back and even better! Inércia 2024 badges now come with a mini OLED screen—perfect for displaying custom text, animations, and more, alongside the ability to play your favorite .mod tunes. 
 
 ## Sponsors
 

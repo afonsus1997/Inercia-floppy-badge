@@ -1,4 +1,4 @@
-24773462696654676
+24775253849671078
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -100391,8 +100391,15 @@ BAT-TH_BH-AAA-A1AJ024
 
 
 0
-2
-2
+0
+0
+mod
+Badgelife-SAOv169-BADGE-2x3
+Through hole straight IDC box header, 2x03, 2.54mm pitch, double rows
+Through hole IDC box header THT 2x03 2.54mm double row
+0
+6
+6
 mod
 CONN-SMD_2P-P1.25_HC_HCZZ0001-2
 

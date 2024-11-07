@@ -18,25 +18,28 @@ typedef struct  {
 
 
 /* I2C0 Config */
-static uint8_t kIoPinI2c0Sda = 0;
-static uint8_t kIoPinI2c0Scl = 1;
+static const uint8_t kIoPinI2c0Sda = 0;
+static const uint8_t kIoPinI2c0Scl = 1;
 
 /* I2C1 Config */
-static uint8_t kIoPinI2c1Sda = 18;
-static uint8_t kIoPinI2c1Scl = 19;
+static const uint8_t kIoPinI2c1Sda = 18;
+static const uint8_t kIoPinI2c1Scl = 19;
 
 /* OLED Config */
-static uint8_t kIoPinOledSda = kIoPinI2c0Sda;
-static uint8_t kIoPinOledScl = kIoPinI2c0Scl;
+static const uint8_t kIoPinOledSda = kIoPinI2c0Sda;
+static const uint8_t kIoPinOledScl = kIoPinI2c0Scl;
 
 /* Potentiometer*/
-static uint8_t kIoPinPot = A0;
+static const uint8_t kIoPotPin = A0;
 
 /* Buttons */
 static const uint8_t kIoButtonTopPin = 5;
 static const uint8_t kIoButtonMidPin = 6;
 static const uint8_t kIoButtonBotPin = 4;
 
+static const uint8_t kIoPotPin = A0;
+
+static const uint8_t kIoRngPin = A1;
 
 static const uint8_t kIoPinAmmountSize = 15;
 
@@ -55,7 +58,7 @@ static io_pin_config_t io_pin_config[kIoPinAmmountSize] = {
   {2, OUTPUT},
   {3, OUTPUT},
   /* Potentiometer */
-  {kIoPinPot, INPUT},
+  {kIoPotPin, INPUT},
   /* Buttons */
   {kIoButtonTopPin, INPUT},
   {kIoButtonMidPin, INPUT},
@@ -76,7 +79,17 @@ static io_button_t io_buttons[kIoButtonAmmount] = {
   {kIoButtonBotPin, HIGH, HIGH, 0, false}
 };
 
-static const unsigned long debounceDelay = 50;
+static const uint8_t kIoAnalogInAmmount = 1;
+
+typedef enum {
+  kIoPot = 0,
+} io_analog_in_e;
+
+static const uint8_t io_analog_pins[kIoAnalogInAmmount] = { kIoPotPin };
+
+
+static const unsigned long kIoDebounceDelay = 50;
+static const unsigned long KIoVolumeDebounceDelay = 50;
 
 
 

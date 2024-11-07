@@ -29,6 +29,11 @@ IoStatus_t IoInitI2C(void){
 
 IoStatus_t IoInit(void) {
   IoStatus_t status = kIoErrNone;
+
+  /* Start by reading an analog input for RNG*/
+  pinMode(kIoRngPin, INPUT);
+  randomSeed(analogRead(kIoRngPin));
+
   status = IoSetPinModes();
   if (status != kIoErrNone) {
     return status;
@@ -48,7 +53,7 @@ IoStatus_t IoCheckButton(io_button_t &button) {
     button.lastDebounceTime = millis();
   }
 
-  if ((millis() - button.lastDebounceTime) > debounceDelay && reading != button.state) {
+  if ((millis() - button.lastDebounceTime) > kIoDebounceDelay && reading != button.state) {
     button.state = reading;
     if (button.state == LOW) {
       button.activated = true;
@@ -66,4 +71,23 @@ IoStatus_t IoReadButtons(void){
   return kIoErrNone;
 }
 
+IoStatus_t IoReadAnalogInputs(void){
+  for (int i = 0; i < kIoAnalogInAmmount; i++) {
+    io_analog_readings[i].value = analogRead(io_analog_pins[i]);
+  }
+  return kIoErrNone;
+}
+
+IoStatus_t IoReadVolume(void){
+  float reading = map(io_analog_readings[kIoPot], 4, 1023, 0, 100) / 100.0;
+
+  if ((millis() - io_last_volume_debounce_time) > KIoVolumeDebounceDelay && abs(reading - io_current_volume) > 2) {
+    io_current_volume = reading;
+    button.activated = true;
+    io_last_volume_debounce_time = millis();
+    Serial.printf("%s Button pressed!\n", button.pin == kIoButtonTopPin ? "Top" : button.pin == kIoButtonMidPin ? "Mid" : "Bot");
+  }
+
+  return kIoErrNone;
+}
 

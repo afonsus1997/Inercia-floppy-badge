@@ -108,7 +108,7 @@ void setup() {
 
   File root = SD.open("/");
   if (!root) {
-    Serial.println("Failed to open /mods directory.");
+    Serial.println("Failed to open directory.");
     return;  // Exit if the directory cannot be opened
   }
 

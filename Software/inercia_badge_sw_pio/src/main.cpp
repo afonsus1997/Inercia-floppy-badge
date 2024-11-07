@@ -1,23 +1,19 @@
 #include "main.h"
 
-extern bool displayingNowPlaying;  // Flag to control now playing visibility
-extern unsigned long
-    displayPopupTime;  // Time when the now playing message was displayed
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
   IoInit();
   OledInit();
+  PlayerInit();
   u8g2.sendBuffer();            // Send the buffer to the display
-  displayingNowPlaying = true;  // Show now playing message
-  displayPopupTime = millis();  // Reset display time
+    // Reset display time
 }
 
 void loop() {
   IoReadButtons();
   IoReadVolume();
   // u8g2.clearBuffer();
-  // handleUiElements();
+  UihandleUiElements();
   // delay(20);
 }

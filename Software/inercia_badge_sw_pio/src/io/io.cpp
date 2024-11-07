@@ -85,9 +85,15 @@ IoStatus_t IoReadVolume(void){
     io_current_volume = reading;
     button.activated = true;
     io_last_volume_debounce_time = millis();
+    UiEnableVolumePopup();
+    // Add hook to set mod player output gain
     Serial.printf("%s Button pressed!\n", button.pin == kIoButtonTopPin ? "Top" : button.pin == kIoButtonMidPin ? "Mid" : "Bot");
   }
 
   return kIoErrNone;
 }
 
+
+float IoGetCurrentVolume(void){
+  return io_current_volume;
+}

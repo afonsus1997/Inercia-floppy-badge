@@ -37,9 +37,15 @@ static const uint8_t kIoButtonTopPin = 5;
 static const uint8_t kIoButtonMidPin = 6;
 static const uint8_t kIoButtonBotPin = 4;
 
+/* Analog Pins*/
 static const uint8_t kIoPotPin = A0;
 
 static const uint8_t kIoRngPin = A1;
+
+/* I2S Pins */
+static const uint8_t kIoI2sSckPin = 20;
+static const uint8_t kIoRI2sDataPin = 22;
+
 
 static const uint8_t kIoPinAmmountSize = 15;
 

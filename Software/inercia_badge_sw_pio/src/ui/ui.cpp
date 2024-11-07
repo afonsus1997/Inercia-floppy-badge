@@ -1,14 +1,12 @@
 #include "ui.h"
 
-char nowPlaying[30];  // Buffer for the currently playing file name
-bool displayingNowPlaying = false;  // Flag to control now playing visibility
-unsigned long displayPopupTime =
-    0;  // Time when the now playing message was displayed
 
-bool displayingVolumePopup = false;  // Single flag for volume popup
-unsigned long volumePopupTime = 0;   // Timer for the popup duration
+void UiEnableVolumePopup(void) {
+  ui_displaying_volume_popup = true;  // Enable the volume popup
+  ui_volume_popup_time = millis();    // Reset the timer
+}
 
-void drawVolumePopup(int volume) {
+void UiDrawVolumePopup(int volume) {
   // Prepare text for display
   u8g2.setFont(u8g2_font_5x8_tr);  // Set font for popup
   String volumeText = "Vol: " + String(volume) + "%";
@@ -45,7 +43,7 @@ void drawVolumePopup(int volume) {
   u8g2.print(volumeText);                     // Display the volume text
 }
 
-void drawNowPlaying(const String& nowPlaying) {
+void UiDrawNowPlaying(const String& nowPlaying) {
   u8g2.setFont(u8g2_font_5x8_tr);  // Set font for popup
   // Prepare text for display
   String nowPlayingText = "Now Playing:";
@@ -130,18 +128,18 @@ void drawNowPlaying(const String& nowPlaying) {
   u8g2.print(truncatedNowPlaying);   // Display the truncated current file name
 }
 
-void handleUiElements(void) {
+void UiHandleUiElements(void) {
   noInterrupts();
   u8g2.setFont(u8g2_font_5x8_tr);  // Set a font that is 8px tall
   u8g2.setDrawColor(1);            // Set color to white
 
-  if (displayingNowPlaying) {
+  if (ui_displaying_now_playing) {
     drawNowPlaying("test.mod");
   }
 
   // Draw volume popup if necessary
-  if (displayingVolumePopup) {
-    drawVolumePopup((int)(0.2 * 100));  // Convert previous volume to percentage
+  if (ui_displaying_volume_popup) {
+    drawVolumePopup((int)(IoGetCurrentVolume() * 100));  // Convert previous volume to percentage
   }
 
   interrupts();
@@ -150,7 +148,7 @@ void handleUiElements(void) {
   u8g2.sendBuffer();
 
   // Check if we need to hide the now playing message
-  if (displayingNowPlaying && (millis() - displayPopupTime >= 3000)) {
-    displayingNowPlaying = false;  // Hide the now playing message
+  if (ui_displaying_now_playing && (millis() - ui_display_popup_time >= 3000)) {
+    ui_displaying_now_playing = false;  // Hide the now playing message
   }
 }

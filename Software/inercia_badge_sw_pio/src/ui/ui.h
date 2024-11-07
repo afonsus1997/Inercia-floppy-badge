@@ -7,12 +7,17 @@
 
 extern U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2;
 
+char ui_now_playing[30];  // Buffer for the currently playing file name
+bool ui_displaying_now_playing = false;  // Flag to control now playing visibility
+unsigned long ui_display_popup_time =0;  // Time when the now playing message was displayed
 
+bool ui_displaying_volume_popup = false;  // Single flag for volume popup
+unsigned long ui_volume_popup_time = 0;   // Timer for the popup duration
 
-void drawVolumePopup(int volume);
-void drawNowPlaying(const String& nowPlaying);
-
-void handleUiElements(void);
+void UiDrawVolumePopup(int volume);
+void UiDrawNowPlaying(const String& nowPlaying);
+void UiEnableVolumePopup(void);
+void UiHandleUiElements(void);
 
 
 

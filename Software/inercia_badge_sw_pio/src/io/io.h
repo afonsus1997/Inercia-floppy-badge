@@ -4,7 +4,7 @@
 
 #include <Wire.h>
 #include "io_config.h"
-
+#include "ui.h"
 typedef enum {
   kIoErr = 0,
   kIoErrNone = 1
@@ -13,7 +13,6 @@ typedef enum {
 static uint16_t io_analog_readings[kIoAnalogInAmmount];
 
 float io_current_volume = 0;
-float io_last_volume = 0;
 
 unsigned long io_last_volume_debounce_time = 0;
 
@@ -30,6 +29,7 @@ IoStatus_t IoReadButtons(void);
 
 IoStatus_t IoReadVolume(void)
 
+float IoGetCurrentVolume(void);
 
 
 #endif  //!__IO__H__

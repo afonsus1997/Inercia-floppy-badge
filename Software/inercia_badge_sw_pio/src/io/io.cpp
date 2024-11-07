@@ -1,8 +1,6 @@
 
 #include "io.h"
 
-// extern void UiEnableVolumePopup(void);
-
 uint16_t io_analog_readings[kIoAnalogInAmmount];
 float io_current_volume = 0;
 unsigned long io_last_volume_debounce_time = 0;
@@ -88,7 +86,7 @@ IoStatus_t IoReadVolume(void){
   if ((millis() - io_last_volume_debounce_time) > KIoVolumeDebounceDelay && abs(reading - io_current_volume) > 2) {
     io_current_volume = reading;
     io_last_volume_debounce_time = millis();
-    // UiEnableVolumePopup();
+    UiEnableVolumePopup();
     // Add hook to set mod player output gain
     Serial.printf("Volume %f\n", io_current_volume);
   }

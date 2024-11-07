@@ -6,6 +6,7 @@ void setup() {
   IoInit();
   OledInit();
   PlayerInit();
+  UiEnableVolumePopup();
   // u8g2.sendBuffer();            // Send the buffer to the display
     // Reset display time
 }

@@ -4,7 +4,7 @@
 
 #include <Wire.h>
 #include "io_config.h"
-// #include "ui.h"
+#include "ui.h"
 
 typedef enum {
   kIoErr = 0,

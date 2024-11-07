@@ -1,8 +1,8 @@
 #include "ui.h"
 
 char ui_now_playing[30];  // Buffer for the currently playing file name
-bool ui_displaying_now_playing = false;  // Flag to control now playing visibility
-unsigned long ui_display_popup_time =0;  // Time when the now playing message was displayed
+bool ui_displaying_now_playing_popup = false;  // Flag to control now playing visibility
+unsigned long ui_now_playing_popup_time =0;  // Time when the now playing message was displayed
 
 bool ui_displaying_volume_popup = false;  // Single flag for volume popup
 unsigned long ui_volume_popup_time = 0;   // Timer for the popup duration
@@ -140,7 +140,7 @@ void UiHandleUiElements(void) {
   u8g2.setFont(u8g2_font_5x8_tr);  // Set a font that is 8px tall
   u8g2.setDrawColor(1);            // Set color to white
 
-  if (ui_displaying_now_playing) {
+  if (ui_displaying_now_playing_popup) {
     UiDrawNowPlaying("test.mod");
   }
 
@@ -149,13 +149,20 @@ void UiHandleUiElements(void) {
     UiDrawVolumePopup((int)(IoGetCurrentVolume() * 100));  // Convert previous volume to percentage
   }
 
+  
+
   interrupts();
 
   // Send buffer to display
   u8g2.sendBuffer();
 
   // Check if we need to hide the now playing message
-  if (ui_displaying_now_playing && (millis() - ui_display_popup_time >= 3000)) {
-    ui_displaying_now_playing = false;  // Hide the now playing message
+  if (ui_displaying_now_playing_popup && (millis() - ui_now_playing_popup_time >= kNowPlayingPopupTimeout)) {
+    ui_displaying_now_playing_popup = false;  // Hide the now playing message
   }
+
+  if (ui_displaying_volume_popup && (millis() - ui_volume_popup_time >= kVolumePopupTimeout)) {
+    ui_displaying_volume_popup = false;  // Hide the now playing message
+  }
+
 }

@@ -56,12 +56,14 @@ IoStatus_t IoCheckButton(io_button_t &button) {
     }
   }
   button.lastState = reading;
+  return kIoErrNone;
 }
 
 IoStatus_t IoReadButtons(void){
   for (int i = 0; i < kIoButtonAmmount; i++) {
     IoCheckButton(io_buttons[i]);
   }
+  return kIoErrNone;
 }
 
 

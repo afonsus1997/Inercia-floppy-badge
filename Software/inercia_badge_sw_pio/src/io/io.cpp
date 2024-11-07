@@ -1,7 +1,11 @@
 
 #include "io.h"
 
+// extern void UiEnableVolumePopup(void);
 
+uint16_t io_analog_readings[kIoAnalogInAmmount];
+float io_current_volume = 0;
+unsigned long io_last_volume_debounce_time = 0;
 
 IoStatus_t IoSetPinModes(void){
   IoStatus_t status = kIoErrNone;
@@ -73,7 +77,7 @@ IoStatus_t IoReadButtons(void){
 
 IoStatus_t IoReadAnalogInputs(void){
   for (int i = 0; i < kIoAnalogInAmmount; i++) {
-    io_analog_readings[i].value = analogRead(io_analog_pins[i]);
+    io_analog_readings[i] = (uint16_t)analogRead(io_analog_pins[i]);
   }
   return kIoErrNone;
 }
@@ -83,11 +87,10 @@ IoStatus_t IoReadVolume(void){
 
   if ((millis() - io_last_volume_debounce_time) > KIoVolumeDebounceDelay && abs(reading - io_current_volume) > 2) {
     io_current_volume = reading;
-    button.activated = true;
     io_last_volume_debounce_time = millis();
-    UiEnableVolumePopup();
+    // UiEnableVolumePopup();
     // Add hook to set mod player output gain
-    Serial.printf("%s Button pressed!\n", button.pin == kIoButtonTopPin ? "Top" : button.pin == kIoButtonMidPin ? "Mid" : "Bot");
+    Serial.printf("Volume %f\n", io_current_volume);
   }
 
   return kIoErrNone;

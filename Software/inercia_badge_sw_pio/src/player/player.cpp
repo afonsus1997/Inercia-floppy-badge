@@ -1,6 +1,14 @@
 
 #include "player.h"
 
+AudioGeneratorMOD *player_mod;
+AudioFileSourceSD *player_fileO;
+AudioOutputI2S *player_out;
+uint16_t player_file_count = 0;
+File player_root;
+File player_entry;
+
+
 void PlayerSetGain(float gain) {
   player_out->SetGain(gain);
 }
@@ -16,12 +24,12 @@ void PlayerInit(void) {
   PlayerInitSdCard();
 
   Serial.println("Available MOD files:");
-  while (entry = root.openNextFile()) {
-    if (!entry.isDirectory() && strstr(entry.name(), ".mod")) {
-      Serial.printf("Index %d: %s\n", player_file_count, entry.name());
+  while (player_entry = player_root.openNextFile()) {
+    if (!player_entry.isDirectory() && strstr(player_entry.name(), ".mod")) {
+      Serial.printf("Index %d: %s\n", player_file_count, player_entry.name());
       player_file_count++;
     }
-    entry.close();
+    player_entry.close();
   }
 
   if (player_file_count == 0) {
@@ -42,7 +50,7 @@ void PlayerInitSdCard(){
   Serial.println("SD initialized successfully.");
 
   player_root = SD.open("/");
-  if (!root) {
+  if (!player_root) {
     Serial.println("Failed to open directory.");
     return;  // Exit if the directory cannot be opened
   }

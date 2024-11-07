@@ -1,5 +1,12 @@
 #include "ui.h"
 
+char ui_now_playing[30];  // Buffer for the currently playing file name
+bool ui_displaying_now_playing = false;  // Flag to control now playing visibility
+unsigned long ui_display_popup_time =0;  // Time when the now playing message was displayed
+
+bool ui_displaying_volume_popup = false;  // Single flag for volume popup
+unsigned long ui_volume_popup_time = 0;   // Timer for the popup duration
+
 
 void UiEnableVolumePopup(void) {
   ui_displaying_volume_popup = true;  // Enable the volume popup
@@ -134,12 +141,12 @@ void UiHandleUiElements(void) {
   u8g2.setDrawColor(1);            // Set color to white
 
   if (ui_displaying_now_playing) {
-    drawNowPlaying("test.mod");
+    UiDrawNowPlaying("test.mod");
   }
 
   // Draw volume popup if necessary
   if (ui_displaying_volume_popup) {
-    drawVolumePopup((int)(IoGetCurrentVolume() * 100));  // Convert previous volume to percentage
+    UiDrawVolumePopup((int)(IoGetCurrentVolume() * 100));  // Convert previous volume to percentage
   }
 
   interrupts();

@@ -9,12 +9,19 @@
 #include "AudioFileSourceSD.h"
 #include "io.h"
 
-AudioGeneratorMOD *player_mod;
-AudioFileSourceSD *player_fileO;
-AudioOutputI2S *player_out;
-uint16_t player_file_count = 0;
+extern AudioGeneratorMOD *player_mod;
+extern AudioFileSourceSD *player_fileO;
+extern AudioOutputI2S *player_out;
+extern uint16_t player_file_count;
 
-File player_root;
-File player_entry;
+extern File player_root;
+extern File player_entry;
+
+void PlayerSetGain(float gain);
+
+void PlayerInit(void);
+
+void PlayerInitSdCard();
+
 
 #endif  //!__PLAYER__H__

@@ -6,14 +6,14 @@ void setup() {
   IoInit();
   OledInit();
   PlayerInit();
-  u8g2.sendBuffer();            // Send the buffer to the display
+  // u8g2.sendBuffer();            // Send the buffer to the display
     // Reset display time
 }
 
 void loop() {
   IoReadButtons();
   IoReadVolume();
-  // u8g2.clearBuffer();
-  UihandleUiElements();
+  u8g2.clearBuffer();
+  UiHandleUiElements();
   // delay(20);
 }

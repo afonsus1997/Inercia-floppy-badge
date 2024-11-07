@@ -4,18 +4,16 @@
 
 #include <Wire.h>
 #include "io_config.h"
-#include "ui.h"
+// #include "ui.h"
+
 typedef enum {
   kIoErr = 0,
   kIoErrNone = 1
 } IoStatus_t;
 
-static uint16_t io_analog_readings[kIoAnalogInAmmount];
-
-float io_current_volume = 0;
-
-unsigned long io_last_volume_debounce_time = 0;
-
+extern uint16_t io_analog_readings[kIoAnalogInAmmount];
+extern float io_current_volume;
+extern unsigned long io_last_volume_debounce_time;
 
 IoStatus_t IoInit(void);
 
@@ -27,7 +25,7 @@ IoStatus_t IoCheckButton(io_button_t &button);
 
 IoStatus_t IoReadButtons(void);
 
-IoStatus_t IoReadVolume(void)
+IoStatus_t IoReadVolume(void);
 
 float IoGetCurrentVolume(void);
 

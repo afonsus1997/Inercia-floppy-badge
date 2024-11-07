@@ -22,6 +22,10 @@ extern "C" {
 
   IoStatus_t IoInitI2C(void);
 
+  IoStatus_t IoCheckButton(io_button_t &button);
+
+  IoStatus_t IoReadButtons(void);
+
 #ifdef __cplusplus
 }
 #endif

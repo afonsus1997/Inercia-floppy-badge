@@ -15,8 +15,9 @@ void setup() {
 }
 
 void loop() {
+  IoReadButtons();
   // put your main code here, to run repeatedly:
-  u8g2.clearBuffer();
-  handleUiElements();
-  delay(20);
+  // u8g2.clearBuffer();
+  // handleUiElements();
+  // delay(20);
 }

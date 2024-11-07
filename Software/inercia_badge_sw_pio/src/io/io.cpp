@@ -6,7 +6,7 @@
 IoStatus_t IoSetPinModes(void){
   IoStatus_t status = kIoErrNone;
 
-  for (int i = 0; i < kExpConnIoSize; i++) {
+  for (int i = 0; i < kIoPinAmmountSize; i++) {
     pinMode(io_pin_config[i].pin_number, io_pin_config[i].pin_mode);
   }
   
@@ -39,6 +39,29 @@ IoStatus_t IoInit(void) {
   }
   return status;
   
+}
+
+IoStatus_t IoCheckButton(io_button_t &button) {
+  int reading = digitalRead(button.pin);
+
+  if (reading != button.lastState) {
+    button.lastDebounceTime = millis();
+  }
+
+  if ((millis() - button.lastDebounceTime) > debounceDelay && reading != button.state) {
+    button.state = reading;
+    if (button.state == LOW) {
+      button.activated = true;
+      Serial.printf("%s Button pressed!\n", button.pin == kIoButtonTopPin ? "Top" : button.pin == kIoButtonMidPin ? "Mid" : "Bot");
+    }
+  }
+  button.lastState = reading;
+}
+
+IoStatus_t IoReadButtons(void){
+  for (int i = 0; i < kIoButtonAmmount; i++) {
+    IoCheckButton(io_buttons[i]);
+  }
 }
 
 

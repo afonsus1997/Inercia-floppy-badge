@@ -3,6 +3,7 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  Serial.println("Starting up...");
   IoInit();
   OledInit();
   PlayerInit();
@@ -13,6 +14,7 @@ void setup() {
 
 void loop() {
   IoReadButtons();
+  IoReadAnalogInputs();
   IoReadVolume();
   u8g2.clearBuffer();
   UiHandleUiElements();

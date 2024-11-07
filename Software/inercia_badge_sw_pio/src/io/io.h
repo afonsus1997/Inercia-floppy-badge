@@ -29,5 +29,7 @@ IoStatus_t IoReadVolume(void);
 
 float IoGetCurrentVolume(void);
 
+IoStatus_t IoReadAnalogInputs(void);
+
 
 #endif  //!__IO__H__

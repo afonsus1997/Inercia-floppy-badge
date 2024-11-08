@@ -83,7 +83,7 @@ IoStatus_t IoReadAnalogInputs(void){
 IoStatus_t IoReadVolume(void){
   float reading = map(io_analog_readings[kIoPot], 4, 1023, 0, 100) / 100.0;
 
-  if ((millis() - io_last_volume_debounce_time) > KIoVolumeDebounceDelay && abs(reading - io_current_volume) > 0.01) {
+  if ((millis() - io_last_volume_debounce_time) > KIoVolumeDebounceDelay && abs(reading - io_current_volume) > kIoPotDeadZone) {
     io_current_volume = reading;
     io_last_volume_debounce_time = millis();
     UiEnableVolumePopup();

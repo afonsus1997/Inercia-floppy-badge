@@ -69,4 +69,5 @@ const uint8_t kIoI2sSckPin = 20;
 
 
  const unsigned long kIoDebounceDelay = 50;
- const unsigned long KIoVolumeDebounceDelay = 50;
+ const unsigned long KIoVolumeDebounceDelay = 100;
+ const float kIoPotDeadZone = 0.02;

@@ -51,4 +51,5 @@ extern io_button_t io_buttons[kIoButtonAmmount];
 extern const uint8_t io_analog_pins[kIoAnalogInAmmount];
 extern const unsigned long kIoDebounceDelay;
 extern const unsigned long KIoVolumeDebounceDelay;
+extern const float kIoPotDeadZone;
 #endif  //!__IO_CONFIG__H__

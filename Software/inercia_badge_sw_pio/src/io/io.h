@@ -32,5 +32,9 @@ float IoGetCurrentVolume(void);
 
 IoStatus_t IoReadAnalogInputs(void);
 
+IoStatus_t IoResetButtonActivations(void);
+
+uint8_t IoGetButtonState(io_button_t &button);
+
 
 #endif  //!__IO__H__

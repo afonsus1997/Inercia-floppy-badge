@@ -53,17 +53,11 @@ const uint8_t kIoI2sSckPin = 20;
 };
 
 
-
-
-
  io_button_t io_buttons[kIoButtonAmmount] = {
   {kIoButtonTopPin, HIGH, HIGH, 0, false},
   {kIoButtonMidPin, HIGH, HIGH, 0, false},
   {kIoButtonBotPin, HIGH, HIGH, 0, false}
 };
-
-
-
 
  const uint8_t io_analog_pins[kIoAnalogInAmmount] = { kIoPotPin };
 

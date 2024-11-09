@@ -7,6 +7,8 @@
 #include "ui.h"
 #include "player.h"
 #include <pico/multicore.h>
+#include "animations/rotating_logo/anim_rotating_logo.h"
+#include "gfx.h"  
 
 void core0_audioTask();
 void core1_displayTask();

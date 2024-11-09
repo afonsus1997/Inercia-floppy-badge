@@ -73,6 +73,13 @@ IoStatus_t IoReadButtons(void){
   return kIoErrNone;
 }
 
+IoStatus_t IoResetButtonActivations(void){
+  for (int i = 0; i < kIoButtonAmmount; i++) {
+    io_buttons[i].activated = false;
+  }
+  return kIoErrNone;
+}
+
 IoStatus_t IoReadAnalogInputs(void){
   for (int i = 0; i < kIoAnalogInAmmount; i++) {
     io_analog_readings[i] = (uint16_t)analogRead(io_analog_pins[i]);
@@ -97,4 +104,8 @@ IoStatus_t IoReadVolume(void){
 
 float IoGetCurrentVolume(void){
   return io_current_volume;
+}
+
+uint8_t IoGetButtonState(io_button_t &button){
+  return button.activated;
 }

@@ -90,6 +90,24 @@ void PlayerSetVolume(float volume){
   player_out->SetGain(volume/100);
 }
 
+void PlayerHandleButtons() {
+    if (IoGetButtonState(io_buttons[kIoButtonTop])) {
+        player_mod->stop();
+        player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
+        PlayerPlayFile(player_file_index);
+    }
+    if (IoGetButtonState(io_buttons[kIoButtonMid])) {
+        Serial.println("Button 2 pressed");
+        UiEnableNowPlayingPopup();  // Store the current time for display duration
+    }
+    if (IoGetButtonState(io_buttons[kIoButtonBot])) {
+        player_mod->stop();
+        // Handle wrap-around for decrementing
+        player_file_index = (player_file_index - 1 + player_file_count) % player_file_count;
+        PlayerPlayFile(player_file_index);
+    }
+}
+
 void PlayerHandlePlayback(){
 
   if (player_mod->isRunning()) {
@@ -97,6 +115,7 @@ void PlayerHandlePlayback(){
       Serial.println("Audio loop finished.");
       player_mod->stop();
     }
+    PlayerHandleButtons();
   } else if (1) { // check if no buttons are pressed
     Serial.println("MOD done");
     player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list

@@ -146,7 +146,7 @@ void UiHandleUiElements(void) {
   u8g2.setDrawColor(1);            // Set color to white
 
   if (ui_displaying_now_playing_popup) {
-    UiDrawNowPlaying("test.mod");
+    UiDrawNowPlaying(player_now_playing);
   }
 
   // Draw volume popup if necessary
@@ -159,7 +159,6 @@ void UiHandleUiElements(void) {
   interrupts();
 
   // Send buffer to display
-  u8g2.sendBuffer();
 
   // Check if we need to hide the now playing message
   if (ui_displaying_now_playing_popup && (millis() - ui_now_playing_popup_time >= kNowPlayingPopupTimeout)) {

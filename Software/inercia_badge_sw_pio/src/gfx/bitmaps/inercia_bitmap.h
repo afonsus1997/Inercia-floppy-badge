@@ -7,8 +7,8 @@
 #ifndef __INERCIA_BITMAP__H__
 #define __INERCIA_BITMAP__H__
 
-#define INERCIA_W  109
-#define INERCIA_H   17
+const uint8_t kInerciaBmpWidth = 109;
+const uint8_t kInerciaBmpHeight = 17;
 
 const uint8_t PROGMEM inercia_bmp[] =
 {

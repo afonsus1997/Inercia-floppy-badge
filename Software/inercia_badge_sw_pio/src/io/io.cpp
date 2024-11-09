@@ -87,7 +87,7 @@ IoStatus_t IoReadVolume(void){
     io_current_volume = reading;
     io_last_volume_debounce_time = millis();
     UiEnableVolumePopup();
-    PlayerSetVolume(io_current_volume);
+    PlayerSetGain(io_current_volume);
     Serial.printf("Volume %f\n", io_current_volume);
   }
 

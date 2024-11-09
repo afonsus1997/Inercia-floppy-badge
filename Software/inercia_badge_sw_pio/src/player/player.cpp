@@ -87,7 +87,7 @@ void PlayerPlayFile(int index) {
 }
 
 void PlayerSetVolume(float volume){
-  player_out->SetGain(volume);
+  player_out->SetGain(volume/100);
 }
 
 void PlayerHandlePlayback(){
@@ -100,7 +100,7 @@ void PlayerHandlePlayback(){
   } else if (1) { // check if no buttons are pressed
     Serial.println("MOD done");
     player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
-    PlayerPlayFile(player_file_index);
+    PlayerPlayFile(14);
   }
 
 }

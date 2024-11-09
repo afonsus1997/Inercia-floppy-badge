@@ -8,15 +8,15 @@ void setup() {
   IoInit();
   OledInit();
   PlayerInit();
-  UiEnableVolumePopup();
-
+  // PlayerSetVolume(50);
   multicore_launch_core1(core1_displayTask);
+  UiEnableVolumePopup();
   // u8g2.sendBuffer();            // Send the buffer to the display
     // Reset display time
 }
 
 void loop() {
-  IoReadButtons();
+  // IoReadButtons();
   IoReadAnalogInputs();
   IoReadVolume();
   PlayerHandlePlayback();
@@ -24,6 +24,8 @@ void loop() {
 }
 
 void core1_displayTask() {
-  u8g2.clearBuffer();
-  UiHandleUiElements();
+  while(1){
+    u8g2.clearBuffer();
+    UiHandleUiElements();
+  }
 }

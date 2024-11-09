@@ -7,7 +7,8 @@ AudioOutputI2S *player_out;
 uint16_t player_file_count = 0;
 File player_root;
 File player_entry;
-
+char player_now_playing[40];  
+uint16_t player_file_index = 0;
 
 void PlayerSetGain(float gain) {
   player_out->SetGain(gain);
@@ -54,4 +55,52 @@ void PlayerInitSdCard(){
     Serial.println("Failed to open directory.");
     return;  // Exit if the directory cannot be opened
   }
+}
+
+void PlayerPlayFile(int index) {
+  File root = SD.open("/mods");
+  root.rewindDirectory();
+
+  while (File entry = root.openNextFile()) {
+    if (index <= 0 && strstr(entry.name(), ".mod")) {
+      Serial.print("Playing: ");
+      Serial.println(entry.name());
+
+      // Safely update nowPlaying using critical section
+      noInterrupts();
+      strncpy(player_now_playing, entry.name(), sizeof(player_now_playing) - 1);
+      player_now_playing[sizeof(player_now_playing) - 1] = '\0';  // Ensure null termination
+
+      // Show now playing message
+      UiEnableNowPlayingPopup();  // Store the current time for display duration
+
+      interrupts();
+
+      player_fileO = new AudioFileSourceSD(entry.name());
+      player_mod->begin(player_fileO, player_out);
+      entry.close();
+      break;
+    }
+    entry.close();
+    index--;
+  }
+}
+
+void PlayerSetVolume(float volume){
+  player_out->SetGain(volume);
+}
+
+void PlayerHandlePlayback(){
+
+  if (player_mod->isRunning()) {
+    if (!player_mod->loop()) {
+      Serial.println("Audio loop finished.");
+      player_mod->stop();
+    }
+  } else if (1) { // check if no buttons are pressed
+    Serial.println("MOD done");
+    player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
+    PlayerPlayFile(player_file_index);
+  }
+
 }

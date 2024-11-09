@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include "io_config.h"
 #include "ui.h"
+#include "player.h"
 
 typedef enum {
   kIoErr = 0,

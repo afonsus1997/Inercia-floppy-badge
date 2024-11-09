@@ -1,6 +1,6 @@
 #include "ui.h"
 
-char ui_now_playing[30];  // Buffer for the currently playing file name
+char ui_now_playing[40];  // Buffer for the currently playing file name
 bool ui_displaying_now_playing_popup = false;  // Flag to control now playing visibility
 unsigned long ui_now_playing_popup_time =0;  // Time when the now playing message was displayed
 
@@ -11,6 +11,11 @@ unsigned long ui_volume_popup_time = 0;   // Timer for the popup duration
 void UiEnableVolumePopup(void) {
   ui_displaying_volume_popup = true;  // Enable the volume popup
   ui_volume_popup_time = millis();    // Reset the timer
+}
+
+void UiEnableNowPlayingPopup(void) {
+  ui_displaying_now_playing_popup = true;  // Enable the volume popup
+  ui_now_playing_popup_time = millis();    // Reset the timer
 }
 
 void UiDrawVolumePopup(int volume) {

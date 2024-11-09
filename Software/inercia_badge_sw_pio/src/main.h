@@ -6,5 +6,9 @@
 #include "oled.h"
 #include "ui.h"
 #include "player.h"
+#include <pico/multicore.h>
+
+void core0_audioTask();
+void core1_displayTask();
 
 #endif  //!__MAIN__H__

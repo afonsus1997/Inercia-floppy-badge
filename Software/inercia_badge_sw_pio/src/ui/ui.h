@@ -6,7 +6,7 @@
 #include "oled.h"
 #include "ui_config.h"
 
-extern char ui_now_playing[30];  // Buffer for the currently playing file name
+extern char ui_now_playing[40];  // Buffer for the currently playing file name
 extern bool ui_displaying_now_playing;  // Flag to control now playing visibility
 extern unsigned long ui_now_playing_popup_time;  // Time when the now playing message was displayed
 extern bool ui_displaying_volume_popup;  // Single flag for volume popup
@@ -17,7 +17,7 @@ void UiDrawVolumePopup(int volume);
 void UiDrawNowPlaying(const String& nowPlaying);
 void UiEnableVolumePopup(void);
 void UiHandleUiElements(void);
-
+void UiEnableNowPlayingPopup(void);
 
 
 #endif  //!__UI__H__

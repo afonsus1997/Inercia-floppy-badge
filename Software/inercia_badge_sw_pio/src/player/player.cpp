@@ -26,7 +26,7 @@ void PlayerInit(void) {
 
   Serial.println("Available MOD files:");
   while (player_entry = player_root.openNextFile()) {
-    if (!player_entry.isDirectory() && strstr(player_entry.name(), ".mod")) {
+    if (!player_entry.isDirectory() && (strstr(player_entry.name(), ".mod") || strstr(player_entry.name(), ".MOD"))) {
       Serial.printf("Index %d: %s\n", player_file_count, player_entry.name());
       player_file_count++;
     }
@@ -44,7 +44,7 @@ void PlayerInit(void) {
 }
 
 void PlayerInitSdCard(){
-  if (!SD.begin(13, 1000000UL * 1000, SPI1)) {
+  if (!SD.begin(13, 4000000UL * 1000, SPI1)) {
     Serial.println("SD initialization failed!");
     while (1);
   }
@@ -58,11 +58,11 @@ void PlayerInitSdCard(){
 }
 
 void PlayerPlayFile(int index) {
-  File root = SD.open("/mods");
+  File root = SD.open("/");
   root.rewindDirectory();
 
   while (File entry = root.openNextFile()) {
-    if (index <= 0 && strstr(entry.name(), ".mod")) {
+    if (index <= 0 && (strstr(entry.name(), ".mod") || strstr(entry.name(), ".MOD"))) {
       Serial.print("Playing: ");
       Serial.println(entry.name());
 
@@ -103,7 +103,8 @@ void PlayerHandleButtons() {
     if (IoGetButtonState(io_buttons[kIoButtonBot])) {
         player_mod->stop();
         // Handle wrap-around for decrementing
-        player_file_index = (player_file_index - 1 + player_file_count) % player_file_count;
+        // player_file_index = (player_file_index - 1 + player_file_count) % player_file_count;
+        player_file_index = random(0, player_file_count-1);
         PlayerPlayFile(player_file_index);
     }
 }

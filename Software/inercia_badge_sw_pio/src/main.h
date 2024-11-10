@@ -10,6 +10,14 @@
 #include "animations/rotating_logo/anim_rotating_logo.h"
 #include "gfx.h"  
 
+#include "TinyGL.h"
+// #include "3dMath.h"
+extern "C" {
+#include "zbuffer.h"
+#include "GL/gl.h"
+}
+ZBuffer* frame_buffer = NULL;
+
 void core0_audioTask();
 void core1_displayTask();
 

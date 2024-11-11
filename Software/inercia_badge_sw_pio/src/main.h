@@ -10,7 +10,6 @@
 #include "animations/rotating_logo/anim_rotating_logo.h"
 #include "gfx.h"  
 
-#include "TinyGL.h"
 // #include "3dMath.h"
 extern "C" {
 #include "zbuffer.h"

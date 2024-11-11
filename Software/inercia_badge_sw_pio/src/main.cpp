@@ -1,6 +1,4 @@
 #include "main.h"
-#include "TinyGL.h"
-// #include "3dMath.h"
 extern "C" {
 #include "zbuffer.h"
 #include "GL/gl.h"
@@ -37,44 +35,8 @@ void initializeTinyGL() {
     glInit(frameBuffer);
 
     // Set the viewport for rendering
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    
-    glShadeModel(GL_FLAT);
-    // glShadeModel(GL_SMOOTH);
-    glEnable(GL_LIGHTING);
-    // glDisable(GL_LIGHTING);
-
-    glEnable(GL_DEPTH_TEST);
-    glDisable(GL_BLEND);
-    glDepthMask(GL_TRUE);
-
-    GLfloat h = (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT;
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glFrustum(-1.0, 1.0, -h, h, 5.0, 60.0);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(0.0, 0.0, -45.0);
-}
-
-void drawLines() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Clear color and depth buffer
-
-    glBegin(GL_LINES);  // Start drawing lines
-    glColor3f(1.0f, 1.0f, 1.0f);  // Set line color to white
-
-    // Draw a few lines
-    glVertex3f(-1.0f, -1.0f, 0.0f);  // Line 1 start
-    glVertex3f(1.0f, 1.0f, 0.0f);   // Line 1 end
-
-    glVertex3f(-1.0f, 1.0f, 0.0f);  // Line 2 start
-    glVertex3f(1.0f, -1.0f, 0.0f);  // Line 2 end
-
-    glVertex3f(0.0f, -1.0f, 0.0f);  // Line 3 start
-    glVertex3f(0.0f, 1.0f, 0.0f);   // Line 3 end
-
-    glEnd();  // End drawing
 }
 
 
@@ -101,24 +63,28 @@ void setup() {
   u8g2.setFont(u8g2_font_5x8_tr); // Set the font
   u8g2.setCursor(0, 10); // Set the cursor position
   u8g2.print("Hello, World!"); // Print the message
+    u8g2.sendBuffer();
   
   // Set up initial 3D transformation (rotation and translation)
-  rotationAngle += 0.01f;
+  glMatrixMode(GL_PROJECTION_MATRIX);
   glLoadIdentity();
-  glTranslatef(0.0f, 0.0f, -5.0f);  // Translate the cube
-  glRotatef(rotationAngle, 1.0f, 1.0f, 0.0f);  // Rotate the cube
-  glSetEnableSpecular(GL_FALSE);
-  ZB_setDitheringMap(frame_buffer, 3);
-
-  // Draw the cube
-  drawLines();
-  glDrawText((unsigned char*)"1BIT text", 0, 0, 0x808080);
-
-  // Flush TinyGL commands to ensure all are executed
-  glFlush();
-  
-  // Send buffer to the display (render output)
-  u8g2.sendBuffer();
+  glMatrixMode(GL_MODELVIEW_MATRIX);
+  glLoadIdentity();
+  while(1){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex2f(0,  1);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex2f(-1, -1);
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex2f(1, -1);
+    glEnd();
+    glFinish();
+    ZB_setDitheringMap(frame_buffer, 3);
+    // Send buffer to the display (render output)
+    u8g2.sendBuffer();
+  }
   
   // Initialize the player or other components (commented out)
   // PlayerInit();

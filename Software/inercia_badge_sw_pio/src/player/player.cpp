@@ -26,23 +26,24 @@ void PlayerInit(void) {
   player_mod->SetStereoSeparation(kPlayerStereoSeparation);
 
   PlayerInitSdCard();
-
-  Serial.println("Available MOD files:");
-  while (player_entry = player_root.openNextFile()) {
-    if (!player_entry.isDirectory() && (strstr(player_entry.name(), ".mod") || strstr(player_entry.name(), ".MOD"))) {
-      Serial.printf("Index %d: %s\n", player_file_count, player_entry.name());
-      player_file_count++;
+  if(player_init){
+    Serial.println("Available MOD files:");
+    while (player_entry = player_root.openNextFile()) {
+      if (!player_entry.isDirectory() && (strstr(player_entry.name(), ".mod") || strstr(player_entry.name(), ".MOD"))) {
+        Serial.printf("Index %d: %s\n", player_file_count, player_entry.name());
+        player_file_count++;
+      }
+      player_entry.close();
     }
-    player_entry.close();
-  }
 
-  if (player_file_count == 0) {
-    Serial.println("No MOD files found.");
-    return;  // Exit if no files were found
-  }
+    if (player_file_count == 0) {
+      Serial.println("No MOD files found.");
+      return;  // Exit if no files were found
+    }
 
-  Serial.print("MODs found: ");
-  Serial.println(player_file_count);
+    Serial.print("MODs found: ");
+    Serial.println(player_file_count);
+  }
 
 }
 

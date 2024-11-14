@@ -10,6 +10,8 @@ File player_entry;
 char player_now_playing[40];  
 uint16_t player_file_index = 0;
 
+bool player_init = false;
+
 void PlayerSetGain(float gain) {
   player_out->SetGain(gain);
 }
@@ -46,7 +48,7 @@ void PlayerInit(void) {
 void PlayerInitSdCard(){
   if (!SD.begin(13, 4000000UL * 1000, SPI1)) {
     Serial.println("SD initialization failed!");
-    while (1);
+    return;  // Exit if the SD card cannot be initialized
   }
   Serial.println("SD initialized successfully.");
 
@@ -55,6 +57,8 @@ void PlayerInitSdCard(){
     Serial.println("Failed to open directory.");
     return;  // Exit if the directory cannot be opened
   }
+
+  player_init = true;
 }
 
 void PlayerPlayFile(int index) {
@@ -110,17 +114,18 @@ void PlayerHandleButtons() {
 }
 
 void PlayerHandlePlayback(){
-
-  if (player_mod->isRunning()) {
-    if (!player_mod->loop()) {
-      Serial.println("Audio loop finished.");
-      player_mod->stop();
+  if(player_init){
+    if (player_mod->isRunning()) {
+      if (!player_mod->loop()) {
+        Serial.println("Audio loop finished.");
+        player_mod->stop();
+      }
+      PlayerHandleButtons();
+    } else if (1) { // check if no buttons are pressed
+      Serial.println("MOD done");
+      player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
+      PlayerPlayFile(14);
     }
-    PlayerHandleButtons();
-  } else if (1) { // check if no buttons are pressed
-    Serial.println("MOD done");
-    player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
-    PlayerPlayFile(14);
   }
 
 }

@@ -13,7 +13,8 @@ uint16_t player_file_index = 0;
 bool player_init = false;
 
 void PlayerSetGain(float gain) {
-  player_out->SetGain(gain);
+  if(player_init)
+    player_out->SetGain(gain);
 }
 
 void PlayerInit(void) {
@@ -46,7 +47,7 @@ void PlayerInit(void) {
 }
 
 void PlayerInitSdCard(){
-  if (!SD.begin(13, 4000000UL * 1000, SPI1)) {
+  if (!SD.begin(13, 5000000UL * 1000, SPI1)) {
     Serial.println("SD initialization failed!");
     return;  // Exit if the SD card cannot be initialized
   }

@@ -12,12 +12,13 @@ void setup() {
 }
 
 void loop() { // core0_audioTask
-  IoReadButtons();
-  IoReadAnalogInputs();
-  IoReadVolume();
-  PlayerHandlePlayback();
-  IoResetButtonActivations();
-  
+  while(1){
+    IoReadButtons();
+    IoReadAnalogInputs();
+    IoReadVolume();
+    PlayerHandlePlayback();
+    IoResetButtonActivations();
+  }
 }
 
 void core1_displayTask() {

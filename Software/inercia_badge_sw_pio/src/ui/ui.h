@@ -2,7 +2,6 @@
 #define __UI__H__
 
 #include <U8g2lib.h>  // Include the U8g2 library
-#include <String.h>
 #include "oled.h"
 #include "ui_config.h"
 

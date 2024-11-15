@@ -49,8 +49,8 @@ void glopPlotPixel(GLParam* p) {
 	#define DM_X(pix_id) ((pix_id % c->zb->xsize) % c->zb->dither_map_size)
 	#define DM_Y(pix_id) ((pix_id / c->zb->xsize) % c->zb->dither_map_size)
 	#define DM_VAL(pix_id) (c->zb->dither_map[c->zb->dither_map_size * DM_Y(pix_id) + DM_X(pix_id)])
-	#define PUT_PIXEL_1B_SET(pix_id) (*(c->zb->pbuf + (pix_id >> 3)) |= (1 << (pix_id & 7)))
-	#define PUT_PIXEL_1B_UNSET(pix_id) (*(c->zb->pbuf + (pix_id >> 3)) &= ~(1 << (pix_id & 7)))
+	#define PUT_PIXEL_1B_SET(pix_id) (*(c->zb->pbuf + (pix_id >> 3)) |= (0x80 >> (pix_id & 7)))
+  #define PUT_PIXEL_1B_UNSET(pix_id) (*(c->zb->pbuf + (pix_id >> 3)) &= ~(0x80 >> (pix_id & 7)))
 	#define PUT_PIXEL_1B(pix_id, cval) (cval >= DM_VAL(pix_id) ? PUT_PIXEL_1B_SET(pix_id) : PUT_PIXEL_1B_UNSET(pix_id))
 	
 	PUT_PIXEL_1B(x, pix);

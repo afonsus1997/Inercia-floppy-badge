@@ -127,7 +127,7 @@ void initializeTinyGL() {
     // glContext = (TinyGLContext *)malloc(sizeof(TinyGLContext));
     frame_buffer = ZB_open(kOledWidth, kOledHeight, ZB_MODE_5R6G5B, NULL);
     glInit(frame_buffer);
-    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    glViewport(0, 0, kOledWidth, kOledHeight);
     // Set up the projection matrix
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

@@ -52,8 +52,12 @@ static GLfloat edgeFunction(GLfloat ax, GLfloat ay, GLfloat bx, GLfloat by, GLfl
 #define DM_Y(pix_id) ((pix_id / zb->xsize) % zb->dither_map_size)
 #define DM_VAL(pix_id) (zb->dither_map[zb->dither_map_size * DM_Y(pix_id) + DM_X(pix_id)])
 
-#define PUT_PIXEL_1B_SET(pix_id) (*(zb->pbuf + (pix_id >> 3)) |= (0x80 >> (pix_id & 7)))
-  #define PUT_PIXEL_1B_UNSET(pix_id) (*(zb->pbuf + (pix_id >> 3)) &= ~(0x80 >> (pix_id & 7)))
+#define PUT_PIXEL_1B_SET(pix_id) \
+    (*(zb->pbuf + ((pix_id % zb->xsize) + ((pix_id / zb->xsize) >> 3) * zb->xsize)) |= (1 << ((pix_id / zb->xsize) & 7)))
+
+#define PUT_PIXEL_1B_UNSET(pix_id) \
+    (*(zb->pbuf + ((pix_id % zb->xsize) + ((pix_id / zb->xsize) >> 3) * zb->xsize)) &= ~(1 << ((pix_id / zb->xsize) & 7)))
+
 #define PUT_PIXEL_1B(pix_id, cval) (cval >= DM_VAL(pix_id) ? PUT_PIXEL_1B_SET(pix_id) : PUT_PIXEL_1B_UNSET(pix_id))
 
 #define PUT_PIXEL_1B_BLEND(pix_id, cval) (*(zb->pbuf + (pix_id >> 3)) |= (cval >= DM_VAL(pix_id) ? (1 << (pix_id & 7)) : 0))

@@ -51,4 +51,6 @@ Once the project is loaded, you’ll find two build environments in the `platfor
 2. **`env:pico_cmsis`**
    - Select this if you are using a debug probe. [More info here](#).
 
-Choose the environment that suits your hardware setup.
+> ##### Note: (more) Additional steps when using Windows
+> For the first **USB** firmware upload, you need to plug in the badge with the BOOTL button pressed so that it shows up as UF2 drive.
+> Then, use Zadig to change the driver of the RP2040 to WinUSB.

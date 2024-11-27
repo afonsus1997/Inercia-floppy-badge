@@ -1,7 +1,8 @@
 #ifndef __GFX__H__
 #define __GFX__H__
 
-#include "gfx_config.h"
+#include "oled.h"
+
 
 void GfxHandler(void);
 

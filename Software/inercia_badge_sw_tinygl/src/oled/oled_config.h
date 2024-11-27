@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+/* Uncomment to use TinyGL */
+#define kUseTinyGL
 
 extern const uint8_t kOledWidth;
 extern const uint8_t kOledHeight;

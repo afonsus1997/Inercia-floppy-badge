@@ -9,6 +9,14 @@ This README provides instructions on setting up the development environment, pro
 - [inercia_badge_sw_pio](https://github.com/afonsus1997/Inercia-floppy-badge/tree/main/Software/inercia_badge_sw_pio) is the main production firmware
 - [inercia_badge_sw_tinygl](https://github.com/afonsus1997/Inercia-floppy-badge/tree/main/Software/inercia_badge_sw_tinygl) is the beta version with ported tinyGL lib
 
+## Updating Your Badge
+
+1. Download the latest .uf2 firmware file from the [releases page](https://github.com/afonsus1997/Inercia-floppy-badge/releases).
+2. Connect the badge to your PC.
+3. With your badge turned off hold the boot button and with the boot button still pressed, turn on the badge. A mass storage device should appear.
+4. Copy the .uf2 firmware file to the badge mass storage device.
+5. The badge is now updated and should reboot automatically! 
+
 ## Development Environment
 
 The development environment is built around [PlatformIO](https://platformio.org), which allows for efficient dependency management and provides greater control over the build process compared to the Arduino IDE. Is it perfect? No. But PlatformIO offers (what seems to us) the best balance of usability, distribution ease, and customization. If you have suggestions for improvement, we’re always open to feedback!

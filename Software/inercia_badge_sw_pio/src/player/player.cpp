@@ -126,8 +126,7 @@ void PlayerHandlePlayback(){
     } else if (1) { // check if no buttons are pressed
       Serial.println("MOD done");
       player_file_index = (player_file_index + 1) % player_file_count;  // Play the next file in the list
-      PlayerPlayFile(14);
+      PlayerPlayFile(player_file_index);
     }
   }
-
 }

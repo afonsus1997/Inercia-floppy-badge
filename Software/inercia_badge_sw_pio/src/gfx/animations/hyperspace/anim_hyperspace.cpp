@@ -1,13 +1,13 @@
 #include "anim_hyperspace.h"
 
-static const uint8_t starSpeed = 5;
-static const uint8_t numStars = 255;
+static const uint8_t starSpeed = 3;
+static const uint8_t numStars = 69;
 static const uint8_t midWidth = kOledWidth / 2;
 static const uint8_t midHeight = kOledHeight / 2;
 
 typedef struct
 {
-    float x, y, z;
+    int16_t x, y, z;
 } Star;
 
 Star stars[numStars];
@@ -39,9 +39,14 @@ void updateStars()
             /**
              * this will create a random new star
              */
-            stars[i].x = (float)((rnd() % kOledWidth) - midWidth);
-            stars[i].y = (float)((rnd() % kOledHeight) - midHeight);
-            stars[i].z = (float)((rnd() % kOledWidth) * 2);
+/*
+            stars[i].x = (float)(rnd() % kOledWidth - midWidth);
+            stars[i].y = (float)(random() % kOledHeight - midHeight);
+            stars[i].z = (float)(rnd() % kOledWidth * 2);
+*/            
+            stars[i].x = (rnd() % kOledWidth - midWidth);
+            stars[i].y = (rnd() % kOledHeight - midHeight);
+            stars[i].z = (rnd() % kOledWidth);
         }
 
         // move star

@@ -1,6 +1,7 @@
 #include "anim_hyperspace.h"
 
-static const uint8_t starSpeed = 3;
+static const uint8_t spread = 4;
+static const uint8_t starSpeed = 2;
 static const uint8_t numStars = 69;
 static const uint8_t midWidth = kOledWidth / 2;
 static const uint8_t midHeight = kOledHeight / 2;
@@ -39,18 +40,18 @@ void updateStars()
             /**
              * this will create a random new star
              */
-/*
-            stars[i].x = (float)(rnd() % kOledWidth - midWidth);
-            stars[i].y = (float)(random() % kOledHeight - midHeight);
-            stars[i].z = (float)(rnd() % kOledWidth * 2);
-*/            
-            stars[i].x = (rnd() % kOledWidth - midWidth);
-            stars[i].y = (rnd() % kOledHeight - midHeight);
+            /*
+                stars[i].x = (float)(rnd() % kOledWidth - midWidth);
+                stars[i].y = (float)(random() % kOledHeight - midHeight);
+                stars[i].z = (float)(rnd() % kOledWidth * 2);
+            */
+            stars[i].x = (rnd() % kOledWidth - midWidth) / spread;
+            stars[i].y = (rnd() % kOledHeight - midHeight) / (spread / 2);
             stars[i].z = (rnd() % kOledWidth);
         }
 
         // move star
-        float scale = 75.0f / stars[i].z;
+        float scale = 69.0f / stars[i].z;
         int x = (int)(stars[i].x * scale + midWidth);
         int y = (int)(stars[i].y * scale + midHeight);
 
